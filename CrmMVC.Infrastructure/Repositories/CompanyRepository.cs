@@ -1,4 +1,5 @@
 ﻿using CrmMVC.Domain.Model;
+using CrmMVC.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CrmMVC.Infrastructure.Repositories
 {
-    public class CompanyRepository
+    public class CompanyRepository : ICompanyRepository
     {
         private readonly Context _context;
 
@@ -45,10 +46,21 @@ namespace CrmMVC.Infrastructure.Repositories
             return company;
         }
 
-        public IQueryable<Company> GetAllCompaniesByCompanyType(int typeId)
+        public IQueryable<Company> GetCompaniesByCompanyType(int typeId)
         {
-            IQueryable<Company> companies = _context.Companies.Where(c => c.TypeId == typeId);
-            return companies;
+            IQueryable<Company> companiesWithType = _context.Companies.Where(c => c.TypeId == typeId);
+            return companiesWithType;
+        }
+
+        public IQueryable<ContactPerson> GetPeopleFromCompany(int companyId)
+        {
+            Company? company = _context.Companies.FirstOrDefault(c => c.Id == companyId);
+            if(company != null)
+            {
+                IQueryable<ContactPerson> contactPeople = _context.ContactPeople.Where(c => c.CompanyId == companyId);
+                return contactPeople;
+            }
+            return null;
         }
     }
 }
