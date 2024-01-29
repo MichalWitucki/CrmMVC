@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public string Type { get; set; }
-        public List<Company> Companies { get; set; } = new List<Company>();
+        public List<Company>? Companies { get; set; } = new List<Company>();
     }
 }
