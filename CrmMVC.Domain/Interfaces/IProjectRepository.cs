@@ -16,7 +16,7 @@ namespace CrmMVC.Domain.Interfaces
         IQueryable<Project>? GetProjectsByStatus(int statusId);
         IQueryable<Project>? GetProjectsByVoivodeship(int voivodeshipId);
         IQueryable<Project>? GetProjectsByType(int typeId);
-        IQueryable<Product>? GetProductsFromProject(int projectId);
+        IQueryable<ProductInProject>? GetProductsFromProject(int projectId);
 
     }
 }
