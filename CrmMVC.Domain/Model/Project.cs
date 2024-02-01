@@ -28,6 +28,6 @@ namespace CrmMVC.Domain.Model
         public int? IssuingAgencyId { get; set; }
         public Company? EngineeringOffice { get; set; }
         public int? EngineeringOfficeId { get; set; }
-        public List<Product>? Products { get; set; } //= new List<Product>();
+        public List<ProductInProject>? ProductsInProjects { get; set; } 
     }
 }

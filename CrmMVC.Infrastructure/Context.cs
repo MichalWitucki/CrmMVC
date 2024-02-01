@@ -71,32 +71,16 @@ namespace CrmMVC.Infrastructure
                 .HasForeignKey(p => p.TypeId);
 
                 eb.HasOne(p => p.Contractor)
-                .WithMany(c => c.Contractors)
+                .WithMany(c => c.InProjecAsContractor)
                 .HasForeignKey(p => p.ContractorId);
 
                 eb.HasOne(p => p.IssuingAgency)
-               .WithMany(c => c.IssuingAgencies)
+               .WithMany(c => c.InProjecAsIssuinAgency)
                .HasForeignKey(p => p.IssuingAgencyId);
 
                 eb.HasOne(p => p.EngineeringOffice)
-               .WithMany(c => c.EngineeringOfices)
+               .WithMany(c => c.InProjecAsEngineeringOffice)
                .HasForeignKey(p => p.EngineeringOfficeId);
-
-                eb.HasMany(p => p.Products)
-                .WithMany(prod => prod.Projects)
-                .UsingEntity<ProductInProject>(
-                    p => p.HasOne(pip => pip.Product)
-                    .WithMany()
-                    .HasForeignKey(pip => pip.ProductId),
-
-                    p => p.HasOne(pip => pip.Project)
-                    .WithMany()
-                    .HasForeignKey(pip => pip.ProjectId),
-
-                    pip =>
-                    {
-                        pip.HasKey(x => new { x.ProjectId, x.ProductId });
-                    });
             });
 
             builder.Entity<Product>(eb =>
@@ -110,12 +94,26 @@ namespace CrmMVC.Infrastructure
                 .HasForeignKey(prod => prod.DiameterId);
             });
 
+            builder.Entity<ProductInProject>(eb =>
+            {
+                eb.HasKey(pip => new { pip.ProjectId, pip.ProductId });
+
+                eb.HasOne(pip => pip.Project)
+                .WithMany(p => p.ProductsInProjects)
+                .HasForeignKey(pip => pip.ProjectId);
+
+                eb.HasOne(pip => pip.Product)
+                .WithMany(prod => prod.ProductsInProjects)
+                .HasForeignKey(pip => pip.ProductId);
+            });
+
+
             builder.Entity<CompanyType>()
-                .HasData(new CompanyType() { Id = 1, Type = "Biuro Projekotwe"},
-                new CompanyType() { Id = 2, Type = "Wykonawca"},
-                new CompanyType() { Id = 3, Type = "Zamawiający"},
-                new CompanyType() { Id = 4, Type = "Dealer"},
-                new CompanyType() { Id = 5, Type = "Inny"}); 
+                .HasData(new CompanyType() { Id = 1, Type = "Biuro Projekotwe" },
+                new CompanyType() { Id = 2, Type = "Wykonawca" },
+                new CompanyType() { Id = 3, Type = "Zamawiający" },
+                new CompanyType() { Id = 4, Type = "Dealer" },
+                new CompanyType() { Id = 5, Type = "Inny" });
         }
     }
 }

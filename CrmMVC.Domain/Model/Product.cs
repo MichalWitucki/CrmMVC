@@ -12,6 +12,6 @@
         public int DiameterId { get; set; }
         public bool IsPipe { get; set; }
         public bool IsOfferItem { get; set; }
-        public List<Project>? Projects { get; set; } //= new List<Project>();
+        public List<ProductInProject>? ProductsInProjects { get; set; }
     }
 }

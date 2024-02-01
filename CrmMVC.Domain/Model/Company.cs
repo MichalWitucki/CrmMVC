@@ -16,9 +16,9 @@ namespace CrmMVC.Domain.Model
         public CompanyType Type { get; set; }
         public int TypeId { get; set; }
         public List<ContactPerson>? ContactPeople { get; set; } = new List<ContactPerson>();
-        public List<Project>? Contractors { get; set; } = new List<Project>();
-        public List<Project>? IssuingAgencies { get; set; } = new List<Project>();
-        public List<Project>? EngineeringOfices { get; set; } = new List<Project>();
+        public List<Project>? InProjecAsContractor { get; set; }
+        public List<Project>? InProjecAsIssuinAgency { get; set; }
+        public List<Project>? InProjecAsEngineeringOffice { get; set; }
     }
 
 }
