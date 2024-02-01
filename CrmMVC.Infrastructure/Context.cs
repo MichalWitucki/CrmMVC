@@ -109,6 +109,13 @@ namespace CrmMVC.Infrastructure
                 .WithMany(pu => pu.Products)
                 .HasForeignKey(prod => prod.DiameterId);
             });
+
+            builder.Entity<CompanyType>()
+                .HasData(new CompanyType() { Id = 1, Type = "Biuro Projekotwe"},
+                new CompanyType() { Id = 2, Type = "Wykonawca"},
+                new CompanyType() { Id = 3, Type = "Zamawiający"},
+                new CompanyType() { Id = 4, Type = "Dealer"},
+                new CompanyType() { Id = 5, Type = "Inny"}); 
         }
     }
 }
