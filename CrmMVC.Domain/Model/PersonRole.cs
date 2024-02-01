@@ -3,7 +3,7 @@
     public class PersonRole
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Role { get; set; }
         public List<ContactPerson>? ContactPeople { get; set; } = new List<ContactPerson>();
     }
 }

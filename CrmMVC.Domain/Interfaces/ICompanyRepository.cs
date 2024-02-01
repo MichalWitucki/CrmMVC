@@ -13,7 +13,7 @@ namespace CrmMVC.Domain.Interfaces
         void DeleteCompany(int companyId);
         IQueryable<Company>? GetAllCompanies();
         IQueryable<Company>? GetCompaniesByCompanyType(int typeId);
-        Company? GetCompanyById(int companyId);
+        Company? GetCompany(int companyId);
         IQueryable<ContactPerson>? GetPeopleFromCompany(int companyId);
     }
 }

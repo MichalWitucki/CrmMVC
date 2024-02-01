@@ -107,13 +107,72 @@ namespace CrmMVC.Infrastructure
                 .HasForeignKey(pip => pip.ProductId);
             });
 
-
             builder.Entity<CompanyType>()
                 .HasData(new CompanyType() { Id = 1, Type = "Biuro Projekotwe" },
                 new CompanyType() { Id = 2, Type = "Wykonawca" },
                 new CompanyType() { Id = 3, Type = "Zamawiający" },
                 new CompanyType() { Id = 4, Type = "Dealer" },
                 new CompanyType() { Id = 5, Type = "Inny" });
+
+            builder.Entity<PersonRole>()
+                .HasData(new PersonRole() { Id = 1, Role = "Przedstawiciel" },
+                new PersonRole() { Id = 2, Role = "Handlowiec" },
+                new PersonRole() { Id = 3, Role = "Projektant" },
+                new PersonRole() { Id = 4, Role = "Asystent" },
+                new PersonRole() { Id = 5, Role = "Kierownik" },
+                new PersonRole() { Id = 6, Role = "Dyrektor" },
+                new PersonRole() { Id = 7, Role = "Doradca" },
+                new PersonRole() { Id = 8, Role = "Właściciel" },
+                new PersonRole() { Id = 9, Role = "Inna" });
+
+            builder.Entity<ProductDiameter>()
+                .HasData(new ProductDiameter() { Id = 1, Diameter = "100" },
+                new ProductDiameter() { Id = 2, Diameter = "150" },
+                new ProductDiameter() { Id = 3, Diameter = "200" },
+                new ProductDiameter() { Id = 4, Diameter = "250" },
+                new ProductDiameter() { Id = 5, Diameter = "300" },
+                new ProductDiameter() { Id = 6, Diameter = "400" },
+                new ProductDiameter() { Id = 7, Diameter = "500" },
+                new ProductDiameter() { Id = 8, Diameter = "600" },
+                new ProductDiameter() { Id = 9, Diameter = "800" });
+
+            builder.Entity<ProductUnit>()
+                .HasData(new ProductUnit() { Id = 1, Unit = "M." },
+                new ProductUnit() { Id = 2, Unit = "SZT." });
+
+            builder.Entity<ProjectStatus>()
+                .HasData(new ProjectStatus() { Id = 1, Status = "Nowy" },
+                new ProjectStatus() { Id = 2, Status = "W opracowaniu" },
+                new ProjectStatus() { Id = 3, Status = "Planowany" },
+                new ProjectStatus() { Id = 4, Status = "Zapytanie" },
+                new ProjectStatus() { Id = 5, Status = "Zgłoszony" },
+                new ProjectStatus() { Id = 6, Status = "Zrealizowany" },
+                new ProjectStatus() { Id = 7, Status = "Utracony" },
+                new ProjectStatus() { Id = 8, Status = "Nie dotyczy" },
+                new ProjectStatus() { Id = 9, Status = "Zdublowany" });
+                        
+            builder.Entity<ProjectType>()
+                .HasData(new ProjectType() { Id = 1, Type = "Projektuj" },
+                new ProjectType() { Id = 2, Type = "Buduj" },
+                new ProjectType() { Id = 3, Type = "Projektuj i buduj" });
+            
+            builder.Entity<Voivodeship>()
+                .HasData(new Voivodeship() { Id = 1, Name = "Donośląskie" },
+                new Voivodeship() { Id = 2, Name = "Kujawsko-Pomorskie" },
+                new Voivodeship() { Id = 3, Name = "Lubelskie" },
+                new Voivodeship() { Id = 4, Name = "Lubuskie" },
+                new Voivodeship() { Id = 5, Name = "Łódzkie" },
+                new Voivodeship() { Id = 6, Name = "Małopolskie" },
+                new Voivodeship() { Id = 7, Name = "Mazowieckie" },
+                new Voivodeship() { Id = 8, Name = "Opolskie" },
+                new Voivodeship() { Id = 9, Name = "Podkarpackie" },
+                new Voivodeship() { Id = 10, Name = "Podlaskie" },
+                new Voivodeship() { Id = 11, Name = "Pomorskie" },
+                new Voivodeship() { Id = 12, Name = "Śląskie" },
+                new Voivodeship() { Id = 13, Name = "Świętokrzyskie" },
+                new Voivodeship() { Id = 14, Name = "Warmińsko-Mazurskie" },
+                new Voivodeship() { Id = 15, Name = "Wielkopolskie" },
+                new Voivodeship() { Id = 16, Name = "Zachodniopomorskie" });
         }
     }
 }

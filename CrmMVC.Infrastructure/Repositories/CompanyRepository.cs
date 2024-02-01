@@ -40,7 +40,7 @@ namespace CrmMVC.Infrastructure.Repositories
             return companies;
         }
 
-        public Company? GetCompanyById(int companyId)
+        public Company? GetCompany(int companyId)
         {
             Company? company = _context.Companies.FirstOrDefault(c => c.Id == companyId);
             return company;
