@@ -1,5 +1,7 @@
-﻿using CrmMVC.Application.Interfaces;
-using CrmMVC.Application.ViewModels.Company;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using CrmMVC.Application.Interfaces;
+using CrmMVC.Application.ViewModels.CompanyVMs;
 using CrmMVC.Domain.Interfaces;
 using CrmMVC.Domain.Model;
 using System;
@@ -13,6 +15,8 @@ namespace CrmMVC.Application.Services
     public class CompanyService : ICompanyService
     {
         private readonly ICompanyRepository _companyRepository;
+        private readonly IMapper _mapper;
+
         public CompanyService(ICompanyRepository companyRepository) 
         {
             _companyRepository = companyRepository;
@@ -25,34 +29,21 @@ namespace CrmMVC.Application.Services
 
         public ListCompanyForListVM GetAllCompaniesForList()
         {
-            IQueryable<Company>? companies = _companyRepository.GetAllCompanies();
-            ListCompanyForListVM result = new ListCompanyForListVM();
-            result.Companies = new List<CompanyForListVM>();
-            foreach (var company in companies)
+            var companies = _companyRepository.GetAllCompanies().ProjectTo<CompanyForListVM>(_mapper.ConfigurationProvider).ToList();
+            var companyList = new ListCompanyForListVM()
             {
-                CompanyForListVM companyVM = new CompanyForListVM()
-                {
-                    Id = company.Id,
-                    Voivodeship = company.Voivodeship,
-                    City = company.City,
-                    Name = company.Name,
-                    Type = company.Type
-                };
-                result.Companies.Add(companyVM);
-            }
-            result.Count = result.Companies.Count;
-            return result;
+                Companies = companies,
+                Count = companies.Count()
+            };
+            return companyList;
         }
 
         public CompanyDetailsVM GetCompanyDetails(int companyId)
         {
-            Company? company = _companyRepository.GetCompany(companyId);
-            CompanyDetailsVM companyVM = new CompanyDetailsVM();
-            companyVM.Id = company.Id;
-            companyVM.Voivodeship = company.Voivodeship;
-            companyVM.City = company.City;
-            companyVM.Name = company.Name;
-            companyVM.Type = company.Type;
+            var company = _companyRepository.GetCompany(companyId);
+            var companyVM = _mapper.Map<CompanyDetailsVM>(company);
+
+
             companyVM.ContactPeople = new List<ContactPeopleForListVM>();
             foreach (var contactPerson in company.ContactPeople)
             {

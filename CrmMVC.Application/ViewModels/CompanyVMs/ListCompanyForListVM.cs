@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrmMVC.Application.ViewModels.Company
+namespace CrmMVC.Application.ViewModels.CompanyVMs
 {
     public class ListCompanyForListVM
     {
