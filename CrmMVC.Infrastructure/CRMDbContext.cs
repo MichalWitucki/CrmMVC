@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace CrmMVC.Infrastructure
 {
-    public class Context : IdentityDbContext
+    public class CRMDbContext : IdentityDbContext
     {
-        public Context(DbContextOptions<Context> dbContextOptions) : base(dbContextOptions)
+        public CRMDbContext(DbContextOptions<CRMDbContext> options) : base(options)
         {
-
         }
+
         public DbSet<Company> Companies { get; set; }
         public DbSet<Voivodeship> Voivodeships { get; set; }
         public DbSet<CompanyType> CompanyTypes { get; set; }
@@ -150,12 +150,12 @@ namespace CrmMVC.Infrastructure
                 new ProjectStatus() { Id = 7, Status = "Utracony" },
                 new ProjectStatus() { Id = 8, Status = "Nie dotyczy" },
                 new ProjectStatus() { Id = 9, Status = "Zdublowany" });
-                        
+
             builder.Entity<ProjectType>()
                 .HasData(new ProjectType() { Id = 1, Type = "Projektuj" },
                 new ProjectType() { Id = 2, Type = "Buduj" },
                 new ProjectType() { Id = 3, Type = "Projektuj i buduj" });
-            
+
             builder.Entity<Voivodeship>()
                 .HasData(new Voivodeship() { Id = 1, Name = "Donośląskie" },
                 new Voivodeship() { Id = 2, Name = "Kujawsko-Pomorskie" },

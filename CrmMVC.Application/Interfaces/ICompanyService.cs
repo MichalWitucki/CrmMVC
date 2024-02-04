@@ -1,4 +1,4 @@
-﻿using CrmMVC.Application.ViewModels.CompanyVMs;
+﻿using CrmMVC.Application.ViewModels.Company;
 using CrmMVC.Domain.Model;
 using System;
 using System.Collections.Generic;

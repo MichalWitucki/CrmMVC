@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using CrmMVC.Application.Interfaces;
-using CrmMVC.Application.ViewModels.CompanyVMs;
+using CrmMVC.Application.ViewModels.Company;
 using CrmMVC.Domain.Interfaces;
 using CrmMVC.Domain.Model;
 using System;
@@ -17,9 +17,10 @@ namespace CrmMVC.Application.Services
         private readonly ICompanyRepository _companyRepository;
         private readonly IMapper _mapper;
 
-        public CompanyService(ICompanyRepository companyRepository) 
+        public CompanyService(ICompanyRepository companyRepository, IMapper mapper) 
         {
             _companyRepository = companyRepository;
+            _mapper = mapper;
         }
 
         public int AddCompany(NewCompanyVM company)

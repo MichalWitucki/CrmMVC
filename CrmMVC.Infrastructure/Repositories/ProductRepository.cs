@@ -10,8 +10,8 @@ namespace CrmMVC.Infrastructure.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly Context _context;
-        public ProductRepository(Context context)
+        private readonly CRMDbContext _context;
+        public ProductRepository(CRMDbContext context)
         {
             _context = context;
         }

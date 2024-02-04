@@ -11,8 +11,8 @@ namespace CrmMVC.Infrastructure.Repositories
 {
     public class ProjectRepository : IProjectRepository
     {
-        private readonly Context _context;
-        public ProjectRepository(Context context)
+        private readonly CRMDbContext _context;
+        public ProjectRepository(CRMDbContext context)
         {
             _context = context;
         }

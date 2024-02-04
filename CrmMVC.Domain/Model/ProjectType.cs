@@ -1,4 +1,6 @@
-﻿namespace CrmMVC.Domain.Model
+﻿using System.Collections.Generic;
+
+namespace CrmMVC.Domain.Model
 {
     public class ProjectType
     {
