@@ -1,4 +1,6 @@
 ﻿
+using AutoMapper;
+using CrmMVC.Application.Mapping;
 using CrmMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CrmMVC.Application.ViewModels.Company
 {
-    public class CompanyDetailsVM //: IMapFrom<Domain.Model.Company>
+    public class CompanyDetailsVM : IMapFrom<Domain.Model.Company>
     {
         public int Id { get; set; }
         public Voivodeship Voivodeship { get; set; }
@@ -18,10 +20,10 @@ namespace CrmMVC.Application.ViewModels.Company
         public CompanyType Type { get; set; }
         public List<ContactPeopleForListVM>? ContactPeople { get; set; }
 
-        //public void Mapping(Profile profile)
-        //{
-        //    profile.CreateMap<Domain.Model.Company, CompanyForListVM>();
-        //    //.forMember(s => s.CityName, opt =>opt.MapFrom(d => d.City + " " d.Name));
-        //}
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<Domain.Model.Company, CompanyForListVM>();
+            //.formember(s => s.cityname, opt =>opt.mapfrom(d => d.city + " " d.name));
+        }
     }
 }
