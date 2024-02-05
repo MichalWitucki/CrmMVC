@@ -23,9 +23,10 @@ namespace CrmMVC.Application.Services
             _mapper = mapper;
         }
 
-        public int AddCompany(NewCompanyVM company)
+        public int AddCompany(Company company)
         {
-            throw new NotImplementedException();
+            _companyRepository.AddCompany(company);
+            return company.Id;
         }
 
         public ListCompanyForListVM GetAllCompaniesForList()

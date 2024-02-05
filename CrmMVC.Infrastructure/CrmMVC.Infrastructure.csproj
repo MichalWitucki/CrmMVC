@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CrmMVC.Application\CrmMVC.Application.csproj" />
+    <ProjectReference Include="..\CrmMVC.Domain\CrmMVC.Domain.csproj" />
   </ItemGroup>
 
 </Project>

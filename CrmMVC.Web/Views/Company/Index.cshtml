@@ -1,0 +1,47 @@
+﻿@model CrmMVC.Application.ViewModels.Company.ListCompanyForListVM
+
+@{
+    ViewData["Title"] = "FIRMY";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AddCompany">+ Nowa firma</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Nazwa
+            </th>
+            <th>
+                Województwo
+            </th>
+            <th>
+                Miejscowość
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Companies) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Voivodeship)
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

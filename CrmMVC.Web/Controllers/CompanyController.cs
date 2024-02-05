@@ -13,18 +13,13 @@ namespace CrmMVC.Web.Controllers
             _companyService = companyService;
         }
 
-
-        [HttpPost]
-        public IActionResult test()
-        {
-            return View();
-        }
-
+        [HttpGet]
         public IActionResult Index()
         {
             var companiesModel = _companyService.GetAllCompaniesForList();
             return View(companiesModel);
         }
+
 
         [HttpGet]
         public IActionResult AddCompany() 
@@ -33,17 +28,23 @@ namespace CrmMVC.Web.Controllers
         }
 
         [HttpPost]
+        public IActionResult AddCompany(Company company)
+        {
+            _companyService.AddCompany(company);
+            return View();
+        }
+
         //public IActionResult AddCompany(CompanyModel companyModel)
         //{ 
         //    var id = _companyService.AddCompany(companyModel);
         //    return View(); 
         //}
 
-        [HttpGet]
-        public IActionResult AddContactPersonToCompany(int companyId)
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public IActionResult AddContactPersonToCompany(int companyId)
+        //{
+        //    return View();
+        //}
 
         //[HttpPost]
         //public IActionResult AddContactPersonToCompany(ContactPersonModel contactPersonModel)
@@ -52,10 +53,10 @@ namespace CrmMVC.Web.Controllers
         //}
 
         //[HttpGet]
-        public IActionResult ShowCompany(int companyId)
-        {
-            var companyModel = _companyService.GetCompanyDetails(companyId);
-            return View(companyModel);
-        }
+        //public IActionResult ShowCompany(int companyId)
+        //{
+        //    var companyModel = _companyService.GetCompanyDetails(companyId);
+        //    return View(companyModel);
+        //}
     }
 }
