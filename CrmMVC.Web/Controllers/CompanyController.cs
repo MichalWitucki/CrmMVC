@@ -1,5 +1,6 @@
 ﻿using CrmMVC.Application.Interfaces;
 using CrmMVC.Application.Services;
+using CrmMVC.Application.ViewModels.Company;
 using CrmMVC.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,17 +29,11 @@ namespace CrmMVC.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCompany(Company company)
+        public IActionResult AddCompany(NewCompanyVM model)
         {
-            _companyService.AddCompany(company);
-            return View();
+            _companyService.AddCompany(model);
+            return RedirectToAction(nameof(AddCompany));
         }
-
-        //public IActionResult AddCompany(CompanyModel companyModel)
-        //{ 
-        //    var id = _companyService.AddCompany(companyModel);
-        //    return View(); 
-        //}
 
         //[HttpGet]
         //public IActionResult AddContactPersonToCompany(int companyId)

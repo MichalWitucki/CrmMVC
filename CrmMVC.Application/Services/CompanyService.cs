@@ -23,21 +23,17 @@ namespace CrmMVC.Application.Services
             _mapper = mapper;
         }
 
-        public int AddCompany(Company company)
+        public int AddCompany(NewCompanyVM companyVM)
         {
+            Company company = _mapper.Map<Company>(companyVM);
             _companyRepository.AddCompany(company);
             return company.Id;
         }
 
-        public ListCompanyForListVM GetAllCompaniesForList()
+        public List<Company> GetAllCompaniesForList()
         {
-            var companies = _companyRepository.GetAllCompanies().ProjectTo<CompanyForListVM>(_mapper.ConfigurationProvider).ToList();
-            var companyList = new ListCompanyForListVM()
-            {
-                Companies = companies,
-                Count = companies.Count()
-            };
-            return companyList;
+            var companies = _companyRepository.GetAllCompanies().ToList();
+            return companies;
         }
 
         public CompanyDetailsVM GetCompanyDetails(int companyId)

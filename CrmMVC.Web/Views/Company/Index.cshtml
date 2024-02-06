@@ -1,40 +1,52 @@
-﻿@model CrmMVC.Application.ViewModels.Company.ListCompanyForListVM
+﻿@model IEnumerable<CrmMVC.Domain.Model.Company>
 
 @{
-    ViewData["Title"] = "FIRMY";
+    ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
 
 <p>
-    <a asp-action="AddCompany">+ Nowa firma</a>
+    <a asp-action="AddCompany">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Id
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                Nazwa
+                @Html.DisplayNameFor(model => model.VoivodeshipId)
             </th>
             <th>
-                Województwo
+                @Html.DisplayNameFor(model => model.City)
             </th>
             <th>
-                Miejscowość
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeId)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Companies) {
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
-                @Html.DisplayFor(modelItem => item.Name)
-                @Html.DisplayFor(modelItem => item.Voivodeship)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VoivodeshipId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeId)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

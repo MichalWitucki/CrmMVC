@@ -10,8 +10,8 @@ namespace CrmMVC.Application.Interfaces
 {
     public interface ICompanyService
     {
-        ListCompanyForListVM GetAllCompaniesForList();
-        int AddCompany(Company company);
+        List<Company> GetAllCompaniesForList();
+        int AddCompany(NewCompanyVM company);
         CompanyDetailsVM GetCompanyDetails(int companyId);
     }
 }

@@ -1,30 +1,39 @@
-﻿
-<h1>Dodawanie nowej firmy</h1>
-</hr>
+﻿@model CrmMVC.Application.ViewModels.Company.NewCompanyVM
 
+@{
+    ViewData["Title"] = "Dodawanie firmy";
+}
+
+<h1>AddCompany</h1>
+
+<h4>NewCompanyVM</h4>
+<hr />
 <div class="row">
-	<div class="col-md-4">
-		<form action="/Company/AddCompany" method="post">
-			<div class="form-group mb-3">
-				<label class="control-label" for="Name">Nazwa</label>
-				<input class="form-control" type="text" id="Name" name="Name" />
-			</div>
-			<div class="form-group mb-3">
-				<label for="Voivodeship">Województwo</label>
-				<select class="form-control" id="exampleFormControlSelect1">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-				</select>
-			</div>
-			<div class="form-group mb-3">
-				<label class="control-label" for="City">Miejscowość</label>
-				<input class="form-control" type="text" id="City" name="City" />
-			</div>
+    <div class="col-md-4">
+        <form asp-action="AddCompany">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Dodaj" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
-
-		</form>
-	</div>
-</div>	
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
