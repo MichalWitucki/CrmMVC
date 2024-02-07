@@ -34,7 +34,7 @@ namespace CrmMVC.Infrastructure.Repositories
             }
         }
 
-        public IQueryable<Company> GetAllCompanies()
+        public IQueryable<Company> GetAll()
         {
             IQueryable<Company> companies = _context.Companies;
             return companies;

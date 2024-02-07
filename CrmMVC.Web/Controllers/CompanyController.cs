@@ -17,8 +17,8 @@ namespace CrmMVC.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var companiesModel = _companyService.GetAllCompaniesForList();
-            return View(companiesModel);
+            var companies = _companyService.GetAll();
+            return View(companies);
         }
 
 
@@ -29,29 +29,11 @@ namespace CrmMVC.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCompany(NewCompanyVM model)
+        public IActionResult AddCompany(CompanyVm company)
         {
-            _companyService.AddCompany(model);
+            _companyService.AddCompany(company);
             return RedirectToAction(nameof(AddCompany));
         }
 
-        //[HttpGet]
-        //public IActionResult AddContactPersonToCompany(int companyId)
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public IActionResult AddContactPersonToCompany(ContactPersonModel contactPersonModel)
-        //{
-        //    return View();
-        //}
-
-        //[HttpGet]
-        //public IActionResult ShowCompany(int companyId)
-        //{
-        //    var companyModel = _companyService.GetCompanyDetails(companyId);
-        //    return View(companyModel);
-        //}
     }
 }

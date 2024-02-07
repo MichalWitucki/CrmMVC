@@ -11,7 +11,7 @@ namespace CrmMVC.Domain.Interfaces
     {
         int AddCompany(Company company);
         void DeleteCompany(int companyId);
-        IQueryable<Company>? GetAllCompanies();
+        IQueryable<Company>? GetAll();
         IQueryable<Company>? GetCompaniesByCompanyType(int typeId);
         Company? GetCompany(int companyId);
         IQueryable<ContactPerson>? GetPeopleFromCompany(int companyId);

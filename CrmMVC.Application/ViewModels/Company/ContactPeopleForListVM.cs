@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CrmMVC.Application.ViewModels.Company
 {
-    public class ContactPeopleForListVM
+    public class ContactPeopleForListVm
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

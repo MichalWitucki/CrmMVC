@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CrmMVC.Application.ViewModels.Company
 {
-    public class CompanyDetailsVM : IMapFrom<Domain.Model.Company>
+    public class CompanyDetailsVm : IMapFrom<Domain.Model.Company>
     {
         public int Id { get; set; }
         public Voivodeship Voivodeship { get; set; }
@@ -18,11 +18,11 @@ namespace CrmMVC.Application.ViewModels.Company
         public string City { get; set; }
         public string Name { get; set; }
         public CompanyType Type { get; set; }
-        public List<ContactPeopleForListVM>? ContactPeople { get; set; }
+        public List<ContactPeopleForListVm>? ContactPeople { get; set; }
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Domain.Model.Company, CompanyForListVM>();
+            profile.CreateMap<Domain.Model.Company, CompanyForListVm>();
             //.formember(s => s.cityname, opt =>opt.mapfrom(d => d.city + " " d.name));
         }
     }

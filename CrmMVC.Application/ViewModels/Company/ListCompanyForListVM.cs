@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace CrmMVC.Application.ViewModels.Company
 {
-    public class ListCompanyForListVM
+    public class ListCompanyForListVm
     {
-        public List<CompanyForListVM> Companies { get; set; }
+        public List<CompanyForListVm> Companies { get; set; }
         public int Count { get; set; }
     }
 }

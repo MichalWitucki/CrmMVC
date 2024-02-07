@@ -23,29 +23,30 @@ namespace CrmMVC.Application.Services
             _mapper = mapper;
         }
 
-        public int AddCompany(NewCompanyVM companyVM)
+        public int AddCompany(CompanyVm companyVM)
         {
             Company company = _mapper.Map<Company>(companyVM);
             _companyRepository.AddCompany(company);
             return company.Id;
         }
 
-        public List<Company> GetAllCompaniesForList()
+        public IEnumerable<CompanyVm> GetAll()
         {
-            var companies = _companyRepository.GetAllCompanies().ToList();
-            return companies;
+            var companies = _companyRepository.GetAll();
+            IEnumerable<CompanyVm> companyVms = _mapper.Map<IEnumerable<CompanyVm>>(companies);
+            return companyVms;
         }
 
-        public CompanyDetailsVM GetCompanyDetails(int companyId)
+        public CompanyDetailsVm GetCompanyDetails(int companyId)
         {
             var company = _companyRepository.GetCompany(companyId);
-            var companyVM = _mapper.Map<CompanyDetailsVM>(company);
+            var companyVM = _mapper.Map<CompanyDetailsVm>(company);
 
 
-            companyVM.ContactPeople = new List<ContactPeopleForListVM>();
+            companyVM.ContactPeople = new List<ContactPeopleForListVm>();
             foreach (var contactPerson in company.ContactPeople)
             {
-                ContactPeopleForListVM contactPeopleVM = new ContactPeopleForListVM()
+                ContactPeopleForListVm contactPeopleVM = new ContactPeopleForListVm()
                 {
                     Id= contactPerson.Id,
                     FirstName = contactPerson.FirstName,

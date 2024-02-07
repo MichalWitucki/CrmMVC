@@ -1,5 +1,8 @@
 ﻿using CrmMVC.Application.Interfaces;
 using CrmMVC.Application.Services;
+using CrmMVC.Application.ViewModels.Company;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 
 using System;
@@ -17,6 +20,9 @@ namespace CrmMVC.Application
         {
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddValidatorsFromAssemblyContaining<CompanyVmValidator>()
+                .AddFluentValidationAutoValidation()
+                .AddFluentValidationClientsideAdapters();
             return services;
         }
     }
