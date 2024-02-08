@@ -1,12 +1,12 @@
 ﻿@model CrmMVC.Application.ViewModels.Company.CompanyVm
 
 @{
-    ViewData["Title"] = "Dodawanie firmy";
+    ViewData["Title"] = "AddCompany";
 }
 
-<h1>FIRMY</h1>
+<h1>AddCompany</h1>
 
-<h4>Nowa firma</h4>
+<h4>CompanyVm</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,20 +18,29 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Voivodeship" class="control-label"></label>
+                <input asp-for="Voivodeship" class="form-control" />
+                <span asp-validation-for="Voivodeship" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="City" class="control-label"></label>
                 <input asp-for="City" class="form-control" />
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
-            <br />
             <div class="form-group">
-                <input type="submit" value="Dodaj" class="btn btn-primary" />
+                <label asp-for="CompanyType" class="control-label"></label>
+                <input asp-for="CompanyType" class="form-control" />
+                <span asp-validation-for="CompanyType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-<br />
+
 <div>
-    <a asp-action="Index">Powrót</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -38,7 +38,7 @@ namespace CrmMVC.Infrastructure
                 .WithMany(v => v.Companies)
                 .HasForeignKey(c => c.VoivodeshipId);
 
-                eb.HasOne(c => c.Type)
+                eb.HasOne(c => c.CompanyType)
                 .WithMany(ct => ct.Companies)
                 .HasForeignKey(c => c.TypeId);
 
@@ -108,22 +108,22 @@ namespace CrmMVC.Infrastructure
             });
 
             builder.Entity<CompanyType>()
-                .HasData(new CompanyType() { Id = 1, Type = "Biuro Projekotwe" },
-                new CompanyType() { Id = 2, Type = "Wykonawca" },
-                new CompanyType() { Id = 3, Type = "Zamawiający" },
-                new CompanyType() { Id = 4, Type = "Dealer" },
-                new CompanyType() { Id = 5, Type = "Inny" });
+                .HasData(new CompanyType() { Id = 1, CompanyTypeName = "Biuro Projekotwe" },
+                new CompanyType() { Id = 2, CompanyTypeName = "Wykonawca" },
+                new CompanyType() { Id = 3, CompanyTypeName = "Zamawiający" },
+                new CompanyType() { Id = 4, CompanyTypeName = "Dealer" },
+                new CompanyType() { Id = 5, CompanyTypeName = "Inny" });
 
             builder.Entity<PersonRole>()
-                .HasData(new PersonRole() { Id = 1, Role = "Przedstawiciel" },
-                new PersonRole() { Id = 2, Role = "Handlowiec" },
-                new PersonRole() { Id = 3, Role = "Projektant" },
-                new PersonRole() { Id = 4, Role = "Asystent" },
-                new PersonRole() { Id = 5, Role = "Kierownik" },
-                new PersonRole() { Id = 6, Role = "Dyrektor" },
-                new PersonRole() { Id = 7, Role = "Doradca" },
-                new PersonRole() { Id = 8, Role = "Właściciel" },
-                new PersonRole() { Id = 9, Role = "Inna" });
+                .HasData(new PersonRole() { Id = 1, PersonRoleName = "Przedstawiciel" },
+                new PersonRole() { Id = 2, PersonRoleName = "Handlowiec" },
+                new PersonRole() { Id = 3, PersonRoleName = "Projektant" },
+                new PersonRole() { Id = 4, PersonRoleName = "Asystent" },
+                new PersonRole() { Id = 5, PersonRoleName = "Kierownik" },
+                new PersonRole() { Id = 6, PersonRoleName = "Dyrektor" },
+                new PersonRole() { Id = 7, PersonRoleName = "Doradca" },
+                new PersonRole() { Id = 8, PersonRoleName = "Właściciel" },
+                new PersonRole() { Id = 9, PersonRoleName = "Inna" });
 
             builder.Entity<ProductDiameter>()
                 .HasData(new ProductDiameter() { Id = 1, Diameter = "100" },
@@ -152,27 +152,27 @@ namespace CrmMVC.Infrastructure
                 new ProjectStatus() { Id = 9, Status = "Zdublowany" });
 
             builder.Entity<ProjectType>()
-                .HasData(new ProjectType() { Id = 1, Type = "Projektuj" },
-                new ProjectType() { Id = 2, Type = "Buduj" },
-                new ProjectType() { Id = 3, Type = "Projektuj i buduj" });
+                .HasData(new ProjectType() { Id = 1, ProjectTypeName = "Projektuj" },
+                new ProjectType() { Id = 2, ProjectTypeName = "Buduj" },
+                new ProjectType() { Id = 3, ProjectTypeName = "Projektuj i buduj" });
 
             builder.Entity<Voivodeship>()
-                .HasData(new Voivodeship() { Id = 1, Name = "Donośląskie" },
-                new Voivodeship() { Id = 2, Name = "Kujawsko-Pomorskie" },
-                new Voivodeship() { Id = 3, Name = "Lubelskie" },
-                new Voivodeship() { Id = 4, Name = "Lubuskie" },
-                new Voivodeship() { Id = 5, Name = "Łódzkie" },
-                new Voivodeship() { Id = 6, Name = "Małopolskie" },
-                new Voivodeship() { Id = 7, Name = "Mazowieckie" },
-                new Voivodeship() { Id = 8, Name = "Opolskie" },
-                new Voivodeship() { Id = 9, Name = "Podkarpackie" },
-                new Voivodeship() { Id = 10, Name = "Podlaskie" },
-                new Voivodeship() { Id = 11, Name = "Pomorskie" },
-                new Voivodeship() { Id = 12, Name = "Śląskie" },
-                new Voivodeship() { Id = 13, Name = "Świętokrzyskie" },
-                new Voivodeship() { Id = 14, Name = "Warmińsko-Mazurskie" },
-                new Voivodeship() { Id = 15, Name = "Wielkopolskie" },
-                new Voivodeship() { Id = 16, Name = "Zachodniopomorskie" });
+                .HasData(new Voivodeship() { Id = 1, VoivodeshipName = "Donośląskie" },
+                new Voivodeship() { Id = 2, VoivodeshipName = "Kujawsko-Pomorskie" },
+                new Voivodeship() { Id = 3, VoivodeshipName = "Lubelskie" },
+                new Voivodeship() { Id = 4, VoivodeshipName = "Lubuskie" },
+                new Voivodeship() { Id = 5, VoivodeshipName = "Łódzkie" },
+                new Voivodeship() { Id = 6, VoivodeshipName = "Małopolskie" },
+                new Voivodeship() { Id = 7, VoivodeshipName = "Mazowieckie" },
+                new Voivodeship() { Id = 8, VoivodeshipName = "Opolskie" },
+                new Voivodeship() { Id = 9, VoivodeshipName = "Podkarpackie" },
+                new Voivodeship() { Id = 10, VoivodeshipName = "Podlaskie" },
+                new Voivodeship() { Id = 11, VoivodeshipName = "Pomorskie" },
+                new Voivodeship() { Id = 12, VoivodeshipName = "Śląskie" },
+                new Voivodeship() { Id = 13, VoivodeshipName = "Świętokrzyskie" },
+                new Voivodeship() { Id = 14, VoivodeshipName = "Warmińsko-Mazurskie" },
+                new Voivodeship() { Id = 15, VoivodeshipName = "Wielkopolskie" },
+                new Voivodeship() { Id = 16, VoivodeshipName = "Zachodniopomorskie" });
         }
     }
 }

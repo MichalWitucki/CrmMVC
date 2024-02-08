@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using CrmMVC.Application.Interfaces;
+﻿using CrmMVC.Application.Interfaces;
 using CrmMVC.Application.ViewModels.Company;
 using CrmMVC.Domain.Interfaces;
 using CrmMVC.Domain.Model;
@@ -15,49 +13,39 @@ namespace CrmMVC.Application.Services
     public class CompanyService : ICompanyService
     {
         private readonly ICompanyRepository _companyRepository;
-        private readonly IMapper _mapper;
 
-        public CompanyService(ICompanyRepository companyRepository, IMapper mapper) 
+        public CompanyService(ICompanyRepository companyRepository) 
         {
             _companyRepository = companyRepository;
-            _mapper = mapper;
         }
 
         public int AddCompany(CompanyVm companyVM)
         {
-            Company company = _mapper.Map<Company>(companyVM);
+            var company = new Company() 
+            {
+                CompanyName = companyVM.Name,
+                City = companyVM.City
+            };
             _companyRepository.AddCompany(company);
-            return company.Id;
+            return 1;
         }
 
         public IEnumerable<CompanyVm> GetAll()
         {
             var companies = _companyRepository.GetAll();
-            IEnumerable<CompanyVm> companyVms = _mapper.Map<IEnumerable<CompanyVm>>(companies);
-            return companyVms;
-        }
-
-        public CompanyDetailsVm GetCompanyDetails(int companyId)
-        {
-            var company = _companyRepository.GetCompany(companyId);
-            var companyVM = _mapper.Map<CompanyDetailsVm>(company);
-
-
-            companyVM.ContactPeople = new List<ContactPeopleForListVm>();
-            foreach (var contactPerson in company.ContactPeople)
+            List<CompanyVm> companiesVm = new List<CompanyVm>();
+            foreach (var company in companies)
             {
-                ContactPeopleForListVm contactPeopleVM = new ContactPeopleForListVm()
+                var companyVm = new CompanyVm()
                 {
-                    Id= contactPerson.Id,
-                    FirstName = contactPerson.FirstName,
-                    LastName = contactPerson.LastName,
-                    PhoneNumber = contactPerson.PhoneNumber,
-                    Email = contactPerson.Email,
-                    Role = contactPerson.Role
+                    Name = company.CompanyName,
+                    Voivodeship = company.Voivodeship.VoivodeshipName,
+                    City = company.City,
+                    CompanyType = company.CompanyType.CompanyTypeName
                 };
-                companyVM.ContactPeople.Add(contactPeopleVM);
+                companiesVm.Add(companyVm);
             }
-            return companyVM;
+            return companiesVm;
         }
     }
 }

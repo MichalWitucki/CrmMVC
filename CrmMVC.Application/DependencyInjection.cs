@@ -19,7 +19,6 @@ namespace CrmMVC.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddTransient<ICompanyService, CompanyService>();
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssemblyContaining<CompanyVmValidator>()
                 .AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters();

@@ -12,6 +12,6 @@ namespace CrmMVC.Application.Interfaces
     {
         IEnumerable<CompanyVm> GetAll();
         int AddCompany(CompanyVm company);
-        CompanyDetailsVm GetCompanyDetails(int companyId);
+
     }
 }
