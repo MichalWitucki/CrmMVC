@@ -11,7 +11,9 @@ namespace CrmMVC.Application.Interfaces
     public interface ICompanyService
     {
         IEnumerable<CompanyVm> GetAll();
-        int AddCompany(CompanyVm company);
+        int AddCompany(AddCompanyVm company);
+        IEnumerable<Voivodeship> GetVoivodeships();
+        IEnumerable<CompanyType> GetCompanyTypes();
 
     }
 }

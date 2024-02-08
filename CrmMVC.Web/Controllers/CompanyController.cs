@@ -3,6 +3,7 @@ using CrmMVC.Application.Services;
 using CrmMVC.Application.ViewModels.Company;
 using CrmMVC.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace CrmMVC.Web.Controllers
 {
@@ -23,13 +24,20 @@ namespace CrmMVC.Web.Controllers
 
 
         [HttpGet]
-        public IActionResult AddCompany() 
-        { 
-            return View(); 
+        public IActionResult AddCompany()
+        {
+            var voivodeships = _companyService.GetVoivodeships().ToList();
+            var companyTypes = _companyService.GetCompanyTypes().ToList();
+            var vm = new AddCompanyVm()
+            {
+                Voivodeships = voivodeships,
+                CompanyTypes = companyTypes,
+            };
+            return View(vm);
         }
 
         [HttpPost]
-        public IActionResult AddCompany(CompanyVm company)
+        public IActionResult AddCompany(AddCompanyVm company)
         {
             _companyService.AddCompany(company);
             return RedirectToAction(nameof(AddCompany));

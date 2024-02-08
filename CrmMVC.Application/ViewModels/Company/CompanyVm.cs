@@ -10,6 +10,7 @@ namespace CrmMVC.Application.ViewModels.Company
 {
     public class CompanyVm
     {
+        public int Id { get; set; }
         public string Name { get; set; } = default!;
         public string Voivodeship { get; set; }
         public string City { get; set; }

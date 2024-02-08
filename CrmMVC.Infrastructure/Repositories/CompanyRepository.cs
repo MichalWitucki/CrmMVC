@@ -41,5 +41,16 @@ namespace CrmMVC.Infrastructure.Repositories
                 .Include(c => c.Voivodeship)
                 .Include(c => c.CompanyType);
         }
+
+        public IQueryable<Voivodeship> GetVoivodeships()
+        {
+            return _context.Voivodeships;
+        }
+
+        public IQueryable<CompanyType> GetCompanyTypes()
+        {
+            return _context.CompanyTypes;
+        }
+        
     }
 }

@@ -40,7 +40,7 @@ namespace CrmMVC.Infrastructure
 
                 eb.HasOne(c => c.CompanyType)
                 .WithMany(ct => ct.Companies)
-                .HasForeignKey(c => c.TypeId);
+                .HasForeignKey(c => c.CompanyTypeId);
 
                 eb.HasMany(c => c.ContactPeople)
                 .WithOne(cp => cp.Company)

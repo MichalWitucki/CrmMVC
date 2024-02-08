@@ -7,14 +7,17 @@ using System.Threading.Tasks;
 
 namespace CrmMVC.Application.ViewModels.Company
 {
-    public class CompanyVmValidator : AbstractValidator<CompanyVm>
+    public class AddCompanyVmValidator : AbstractValidator<AddCompanyVm>
     {
-        public CompanyVmValidator()
+        public AddCompanyVmValidator()
         {
             RuleFor(c => c.Name)
                 .NotEmpty().WithMessage("Pole jest wymagane");
 
             RuleFor(c => c.City)
+                .NotEmpty().WithMessage("Pole jest wymagane");
+
+            RuleFor(c => c.VoivodeshipId)
                 .NotEmpty().WithMessage("Pole jest wymagane");
         }
     }
