@@ -13,28 +13,31 @@
         <form asp-action="AddCompany">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">Nazwa</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+            </br>
             <div class="form-group">
-                <label asp-for="VoivodeshipId" class="control-label"></label>
+                <label asp-for="VoivodeshipId" class="control-label">Województwo</label>
                 <select asp-for="VoivodeshipId" asp-items="@(new SelectList(Model.Voivodeships,"Id","VoivodeshipName"))" class="form-control">
-                    <option> --- Wybierz województwo ---</option>
+                    <option></option>
                 </select>
                 <span asp-validation-for="VoivodeshipId" class="text-danger"></span>
             </div>
+            </br>
             <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
+                <label asp-for="City" class="control-label">Miejscowość</label>
                 <input asp-for="City" class="form-control" />
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="companyTypeId" class="control-label"></label>
-                <select asp-for="companyTypeId" asp-items="@(new SelectList(Model.CompanyTypes,"Id","CompanyTypeName"))" class="form-control">
-                    <option> --- Wybierz typ ---</option>
+            </br>
+            <div class="dropdown">
+                <label asp-for="CompanyTypeId" class="control-label">Typ</label>
+                <select asp-for="CompanyTypeId" asp-items="@(new SelectList(Model.CompanyTypes,"Id","CompanyTypeName"))" class="form-control">
+                    <option></option>
                 </select>
-                <span asp-validation-for="companyTypeId" class="text-danger"></span>
+                <span asp-validation-for="CompanyTypeId" class="text-danger"></span>
             </div>
             </br>
             <div class="form-group">

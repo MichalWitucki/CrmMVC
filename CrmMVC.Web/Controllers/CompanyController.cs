@@ -22,7 +22,6 @@ namespace CrmMVC.Web.Controllers
             return View(companies);
         }
 
-
         [HttpGet]
         public IActionResult AddCompany()
         {
@@ -40,7 +39,14 @@ namespace CrmMVC.Web.Controllers
         public IActionResult AddCompany(AddCompanyVm company)
         {
             _companyService.AddCompany(company);
-            return RedirectToAction(nameof(AddCompany));
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult ShowDetails(int id) 
+        {
+            var company = _companyService.GetCompany(id);
+            return View(company);
         }
 
     }

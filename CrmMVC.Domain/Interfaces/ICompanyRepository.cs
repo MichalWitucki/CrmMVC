@@ -13,5 +13,6 @@ namespace CrmMVC.Domain.Interfaces
         IQueryable<Company>? GetAll();
         IQueryable<Voivodeship> GetVoivodeships();
         IQueryable<CompanyType> GetCompanyTypes();
+        Company? GetCompany(int id);
     }
 }

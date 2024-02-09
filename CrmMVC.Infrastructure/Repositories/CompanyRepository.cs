@@ -18,28 +18,26 @@ namespace CrmMVC.Infrastructure.Repositories
             _context = context;
         }
 
-        public int AddCompany(Company company) 
-        {
-            _context.Companies.Add(company);
-            _context.SaveChanges();
-            return company.Id;
-        }
-
-        //public void DeleteCompany(int companyId) 
-        //{
-        //    Company? companyToDelete = _context.Companies.Find(companyId);
-        //    if (companyToDelete != null)
-        //    {
-        //        _context.Companies.Remove(companyToDelete);
-        //        _context.SaveChanges();
-        //    }
-        //}
-
         public IQueryable<Company> GetAll()
         {
             return _context.Companies
                 .Include(c => c.Voivodeship)
                 .Include(c => c.CompanyType);
+        }
+
+        public Company? GetCompany(int id) 
+        {
+            return _context.Companies
+                .Include(c => c.Voivodeship)
+                .Include(c => c.CompanyType)
+                .FirstOrDefault(c => c.Id == id);
+        }
+
+        public int AddCompany(Company company) 
+        {
+            _context.Companies.Add(company);
+            _context.SaveChanges();
+            return company.Id;
         }
 
         public IQueryable<Voivodeship> GetVoivodeships()

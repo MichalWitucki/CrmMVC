@@ -19,6 +19,9 @@ namespace CrmMVC.Application.ViewModels.Company
 
             RuleFor(c => c.VoivodeshipId)
                 .NotEmpty().WithMessage("Pole jest wymagane");
+
+            RuleFor(c => c.CompanyTypeId)
+                .NotEmpty().WithMessage("Pole jest wymagane");
         }
     }
 }

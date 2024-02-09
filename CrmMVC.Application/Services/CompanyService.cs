@@ -19,19 +19,6 @@ namespace CrmMVC.Application.Services
             _companyRepository = companyRepository;
         }
 
-        public int AddCompany(AddCompanyVm companyVM)
-        {
-            var company = new Company()
-            {
-                CompanyName = companyVM.Name,
-                City = companyVM.City,
-                VoivodeshipId = companyVM.VoivodeshipId,
-                CompanyTypeId = companyVM.companyTypeId
-            };
-            _companyRepository.AddCompany(company);
-            return 1;
-        }
-
         public IEnumerable<CompanyVm> GetAll()
         {
             var companies = _companyRepository.GetAll();
@@ -41,7 +28,7 @@ namespace CrmMVC.Application.Services
                 var companyVm = new CompanyVm()
                 {
                     Id = company.Id,
-                    Name = company.CompanyName,
+                    CompanyName = company.CompanyName,
                     Voivodeship = company.Voivodeship.VoivodeshipName,
                     City = company.City,
                     CompanyType = company.CompanyType.CompanyTypeName
@@ -49,6 +36,33 @@ namespace CrmMVC.Application.Services
                 companiesVm.Add(companyVm);
             }
             return companiesVm;
+        }
+
+        public CompanyVm GetCompany(int id)
+        {
+            var company = _companyRepository.GetCompany(id);
+            var companyVm = new CompanyVm()
+            {
+                Id = company.Id,
+                CompanyName = company.CompanyName,
+                Voivodeship = company.Voivodeship.VoivodeshipName,
+                City = company.City,
+                CompanyType = company.CompanyType.CompanyTypeName
+            };
+            return companyVm;
+        }
+
+        public int AddCompany(AddCompanyVm companyVM)
+        {
+            var company = new Company()
+            {
+                CompanyName = companyVM.Name,
+                City = companyVM.City,
+                VoivodeshipId = companyVM.VoivodeshipId,
+                CompanyTypeId = companyVM.CompanyTypeId
+            };
+            _companyRepository.AddCompany(company);
+            return 1;
         }
 
         public IEnumerable<Voivodeship> GetVoivodeships()

@@ -13,19 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Nazwa
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Voivodeship)
+                Województwo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                Miejscowość
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CompanyType)
+                Typ
             </th>
             <th></th>
         </tr>
@@ -37,7 +37,7 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.CompanyName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Voivodeship)
@@ -50,7 +50,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Szczegóły", "ShowDetails", new { id=item.Id}) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
