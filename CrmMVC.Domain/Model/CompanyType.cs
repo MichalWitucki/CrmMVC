@@ -6,6 +6,6 @@ namespace CrmMVC.Domain.Model
     {
         public int Id { get; set; }
         public string CompanyTypeName { get; set; }
-        public List<Company>? Companies { get; set; } = new List<Company>();
+        public List<Company>? Companies { get; set; }
     }
 }

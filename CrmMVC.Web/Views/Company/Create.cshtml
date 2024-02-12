@@ -1,0 +1,53 @@
+﻿@model CrmMVC.Application.ViewModels.Company.AddCompanyVm
+
+@{
+    ViewData["Title"] = "Nowa firma";
+}
+
+<h1>FIRMY</h1>
+
+<h4>Dodawanie nowej firmy</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddCompany">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CompanyName" class="control-label">Nazwa</label>
+                <input asp-for="CompanyName" class="form-control" />
+                <span asp-validation-for="CompanyName" class="text-danger"></span>
+            </div>
+            <div class="dropdown">
+                <label asp-for="VoivodeshipId" class="control-label">Województwo</label>
+                <select asp-for="VoivodeshipId" asp-items="@(new SelectList(Model.Voivodeships,"Id","VoivodeshipName"))" class="form-control">
+                    <option></option>
+                </select>
+                <span asp-validation-for="VoivodeshipId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label">Miejscowość</label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="dropdown">
+                <label asp-for="CompanyTypeId" class="control-label">Typ</label>
+                <select asp-for="CompanyTypeId" asp-items="@(new SelectList(Model.CompanyTypes,"Id","CompanyTypeName"))" class="form-control">
+                    <option></option>
+                </select>
+                <span asp-validation-for="CompanyTypeId" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Dodaj" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Powrót</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

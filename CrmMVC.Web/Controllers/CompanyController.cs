@@ -23,7 +23,7 @@ namespace CrmMVC.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddCompany()
+        public IActionResult Create()
         {
             var voivodeships = _companyService.GetVoivodeships().ToList();
             var companyTypes = _companyService.GetCompanyTypes().ToList();
@@ -36,18 +36,44 @@ namespace CrmMVC.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCompany(AddCompanyVm company)
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(AddCompanyVm company)
         {
             _companyService.AddCompany(company);
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
-        public IActionResult ShowDetails(int id) 
+        public IActionResult Details(int id) 
         {
             var company = _companyService.GetCompany(id);
             return View(company);
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var company = _companyService.GetCompanyForEdit(id); 
+            var voivodeships = _companyService.GetVoivodeships().ToList();
+            var companyTypes = _companyService.GetCompanyTypes().ToList();
+            company.Voivodeships = voivodeships;
+            company.CompanyTypes = companyTypes;
+            return View(company);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(AddCompanyVm company)
+        {
+            _companyService.UpdateCompany(company);
+            return RedirectToAction(nameof(Index));
+        }
+
+        
+        public IActionResult Delete(int id)
+        {
+            _companyService.DeleteCompany(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

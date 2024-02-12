@@ -6,7 +6,7 @@ namespace CrmMVC.Domain.Model
     {
         public int Id { get; set; }
         public string VoivodeshipName { get; set; }
-        public List<Company>? Companies { get; set; } = new List<Company>();
-        public List<Project>? Projects { get; set; } = new List<Project>();
+        public List<Company>? Companies { get; set; }
+        public List<Project>? Projects { get; set; }
     }
 }

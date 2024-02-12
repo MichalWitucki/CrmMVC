@@ -30,14 +30,31 @@ namespace CrmMVC.Infrastructure.Repositories
             return _context.Companies
                 .Include(c => c.Voivodeship)
                 .Include(c => c.CompanyType)
+                .Include(c => c.ContactPeople)
                 .FirstOrDefault(c => c.Id == id);
         }
 
-        public int AddCompany(Company company) 
+        public void AddCompany(Company company) 
         {
             _context.Companies.Add(company);
             _context.SaveChanges();
-            return company.Id;
+        }
+
+        public void UpdateCompany(Company company)
+        {
+            _context.Attach(company);
+            _context.Entry(company).Property("CompanyName").IsModified = true;
+            _context.Entry(company).Property("VoivodeshipId").IsModified = true;
+            _context.Entry(company).Property("City").IsModified = true;
+            _context.Entry(company).Property("CompanyTypeId").IsModified = true;
+            _context.SaveChanges();
+        }
+
+        public void DeleteCompany(int id)
+        {
+            Company? company = _context.Companies.Find(id); 
+            _context.Companies.Remove(company);
+            _context.SaveChanges();
         }
 
         public IQueryable<Voivodeship> GetVoivodeships()
@@ -49,6 +66,5 @@ namespace CrmMVC.Infrastructure.Repositories
         {
             return _context.CompanyTypes;
         }
-        
     }
 }

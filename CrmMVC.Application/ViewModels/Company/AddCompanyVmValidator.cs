@@ -11,7 +11,7 @@ namespace CrmMVC.Application.ViewModels.Company
     {
         public AddCompanyVmValidator()
         {
-            RuleFor(c => c.Name)
+            RuleFor(c => c.CompanyName)
                 .NotEmpty().WithMessage("Pole jest wymagane");
 
             RuleFor(c => c.City)

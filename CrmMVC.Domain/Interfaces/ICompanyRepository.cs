@@ -9,10 +9,12 @@ namespace CrmMVC.Domain.Interfaces
 {
     public interface ICompanyRepository
     {
-        int AddCompany(Company company);
+        void AddCompany(Company company);
         IQueryable<Company>? GetAll();
         IQueryable<Voivodeship> GetVoivodeships();
         IQueryable<CompanyType> GetCompanyTypes();
         Company? GetCompany(int id);
+        void UpdateCompany(Company company);
+        void DeleteCompany(int id);
     }
 }

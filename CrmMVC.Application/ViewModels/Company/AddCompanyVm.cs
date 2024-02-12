@@ -9,7 +9,8 @@ namespace CrmMVC.Application.ViewModels.Company
 {
     public class AddCompanyVm
     {
-        public string? Name { get; set; }
+        public int Id { get; set; }
+        public string? CompanyName { get; set; }
         public int VoivodeshipId { get; set; }
         public List<Voivodeship> Voivodeships { get; set; }
         public string? City { get; set; }

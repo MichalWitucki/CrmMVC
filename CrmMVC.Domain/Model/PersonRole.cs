@@ -6,6 +6,6 @@ namespace CrmMVC.Domain.Model
     {
         public int Id { get; set; }
         public string PersonRoleName { get; set; }
-        public List<ContactPerson>? ContactPeople { get; set; } = new List<ContactPerson>();
+        public List<ContactPerson>? ContactPeople { get; set; }
     }
 }
