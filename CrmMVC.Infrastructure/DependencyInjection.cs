@@ -15,6 +15,7 @@ namespace CrmMVC.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddTransient<ICompanyRepository, CompanyRepository>();
+            services.AddTransient<IContactPersonRepository, ContactPersonRepository>();
             return services;
         }
     }

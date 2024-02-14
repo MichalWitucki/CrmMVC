@@ -15,7 +15,7 @@ namespace CrmMVC.Application.ViewModels.Company
         public string City { get; set; }
         public string CompanyName { get; set; }
         public string CompanyType { get; set; }
-        
-        public List<ContactPerson>? ContactPeople { get; set; } = new List<ContactPerson>();
+
+        public List<CrmMVC.Domain.Model.ContactPerson>? ContactPeople { get; set; } = new List<Domain.Model.ContactPerson>();
     }
 }

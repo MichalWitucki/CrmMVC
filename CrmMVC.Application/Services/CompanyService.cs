@@ -47,7 +47,8 @@ namespace CrmMVC.Application.Services
                 CompanyName = company.CompanyName,
                 Voivodeship = company.Voivodeship.VoivodeshipName,
                 City = company.City,
-                CompanyType = company.CompanyType.CompanyTypeName
+                CompanyType = company.CompanyType.CompanyTypeName,
+                ContactPeople = company.ContactPeople,
             };
             return companyVm;
         }
