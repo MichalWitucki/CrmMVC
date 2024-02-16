@@ -10,6 +10,7 @@ namespace CrmMVC.Application.Interfaces
 {
     public interface IContactPersonService
     {
+        void AddContactPerson(AddContactPersonVm person);
         IEnumerable<ContactPersonVm> GetAll();
         IEnumerable<PersonRole> GetPersonRoles();
     }

@@ -18,6 +18,12 @@ namespace CrmMVC.Infrastructure.Repositories
             _context = context;
         }
 
+        public void AddContactPerson(ContactPerson person)
+        {
+            _context.ContactPeople.Add(person);
+            _context.SaveChanges();
+        }
+
         public IQueryable<ContactPerson> GetAll()
         {
             return _context.ContactPeople

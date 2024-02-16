@@ -67,14 +67,14 @@ namespace CrmMVC.Application.Services
             return companyVm;
         }
 
-        public void AddCompany(AddCompanyVm companyVM)
+        public void AddCompany(AddCompanyVm companyVm)
         {
             var company = new Company()
             {
-                CompanyName = companyVM.CompanyName,
-                City = companyVM.City,
-                VoivodeshipId = companyVM.VoivodeshipId,
-                CompanyTypeId = companyVM.CompanyTypeId
+                CompanyName = companyVm.CompanyName,
+                City = companyVm.City,
+                VoivodeshipId = companyVm.VoivodeshipId,
+                CompanyTypeId = companyVm.CompanyTypeId
             };
             _companyRepository.AddCompany(company);
         }

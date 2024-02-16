@@ -48,10 +48,7 @@
 </div>
 <br />
 <h5>Osoby</h5>
-@Html.ActionLink("+ Nowa osoba", "Create", "ContactPersonController" , new { id = Model.Id }) 
-@* <p>
-    <a asp-controller="ContactPerson" asp-action="Create" asp>+ Nowa osoba</a>
-</p> *@
+@Html.ActionLink("+ Nowa osoba", "Create", "ContactPerson" , new { companyId = Model.Id }) 
 <table class="table">
     <thead>
         <tr>

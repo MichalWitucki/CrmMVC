@@ -1,4 +1,5 @@
 ﻿using CrmMVC.Application.Interfaces;
+using CrmMVC.Application.ViewModels.Company;
 using CrmMVC.Application.ViewModels.ContactPerson;
 using CrmMVC.Domain.Interfaces;
 using CrmMVC.Domain.Model;
@@ -17,6 +18,20 @@ namespace CrmMVC.Application.Services
         public ContactPersonService(IContactPersonRepository contactPersonRepository)
         {
             _contactPersonRepository = contactPersonRepository;
+        }
+
+        public void AddContactPerson(AddContactPersonVm personVm)
+        {
+            var person = new ContactPerson()
+            {
+                FirstName = personVm.FirstName,
+                LastName = personVm.LastName,
+                Email = personVm.Email,
+                PhoneNumber = personVm.PhoneNumber,
+                RoleId = personVm.RoleId,
+                CompanyId = personVm.CompanyId
+            };
+            _contactPersonRepository.AddContactPerson(person);
         }
 
         public IEnumerable<ContactPersonVm> GetAll()

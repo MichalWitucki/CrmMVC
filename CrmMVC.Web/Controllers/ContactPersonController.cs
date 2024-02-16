@@ -24,22 +24,23 @@ namespace CrmMVC.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create(int id)
+        public IActionResult Create(int companyId)
         {
             var roles = _contactPersonService.GetPersonRoles().ToList();
             var vm = new AddContactPersonVm()
             {
                 Roles = roles,
-                CompanyId = id
+                CompanyId = companyId
             };
             return View(vm);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Create() 
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(AddContactPersonVm person)
+        {
+            _contactPersonService.AddContactPerson(person);
+            return RedirectToAction("Details","Company", new {@id = person.CompanyId});
+        }
     }
 }
