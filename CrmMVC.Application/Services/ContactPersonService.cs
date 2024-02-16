@@ -40,5 +40,10 @@ namespace CrmMVC.Application.Services
             }
             return contactPeopleVm;
         }
+
+        public IEnumerable<PersonRole> GetPersonRoles()
+        {
+            return _contactPersonRepository.GetPersonRoles().ToList();
+        }
     }
 }

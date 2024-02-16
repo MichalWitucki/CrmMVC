@@ -24,5 +24,10 @@ namespace CrmMVC.Infrastructure.Repositories
                 .Include(cp => cp.Company)
                 .Include(cp => cp.Role);
         }
+
+        public IQueryable<PersonRole> GetPersonRoles()
+        {
+            return _context.PersonRoles;
+        }
     }
 }

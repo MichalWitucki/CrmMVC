@@ -2,6 +2,9 @@
 using CrmMVC.Application.Interfaces;
 using CrmMVC.Application.ViewModels.Company;
 using System.Collections.Generic;
+using CrmMVC.Application.Services;
+using CrmMVC.Application.ViewModels.ContactPerson;
+using System.Linq;
 
 namespace CrmMVC.Web.Controllers
 {
@@ -21,9 +24,15 @@ namespace CrmMVC.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            return View();
+            var roles = _contactPersonService.GetPersonRoles().ToList();
+            var vm = new AddContactPersonVm()
+            {
+                Roles = roles,
+                CompanyId = id
+            };
+            return View(vm);
         }
 
         //[HttpPost]

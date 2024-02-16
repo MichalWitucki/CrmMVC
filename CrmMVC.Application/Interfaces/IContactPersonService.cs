@@ -1,4 +1,5 @@
 ﻿using CrmMVC.Application.ViewModels.ContactPerson;
+using CrmMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace CrmMVC.Application.Interfaces
     public interface IContactPersonService
     {
         IEnumerable<ContactPersonVm> GetAll();
+        IEnumerable<PersonRole> GetPersonRoles();
     }
 }
