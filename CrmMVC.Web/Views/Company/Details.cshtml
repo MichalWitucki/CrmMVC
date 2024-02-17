@@ -1,7 +1,7 @@
 ﻿@model CrmMVC.Application.ViewModels.Company.CompanyVm
 
 @{
-    ViewData["Title"] = "Pokaż szczegóły";
+    ViewData["Title"] = "Szczegóły";
 }
 
 <h1>FIRMY</h1>
@@ -17,25 +17,25 @@
             @Html.DisplayFor(model => model.Id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Voivodeship)
+            Województwo
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Voivodeship)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.City)
+            Miejscowość
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.City)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CompanyName)
+            Nazwa
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CompanyName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CompanyType)
+            Typ
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CompanyType)
@@ -96,8 +96,8 @@
                     @Html.DisplayFor(modelItem => item.Role)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                    @Html.ActionLink("Szczegóły", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Edycja", "Edit", "ContactPerson", new { id=item.Id }) |
+                    @Html.ActionLink("Szczegóły", "Details", "ContactPerson", new { id = item.Id }) |
                     @Html.ActionLink("Usuń", "Delete", new { id=item.Id })
                 </td>
             </tr>

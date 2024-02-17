@@ -40,7 +40,29 @@ namespace CrmMVC.Web.Controllers
         public IActionResult Create(AddContactPersonVm person)
         {
             _contactPersonService.AddContactPerson(person);
-            return RedirectToAction("Details","Company", new {@id = person.CompanyId});
+            return RedirectToAction("Details", "Company", new { @id = person.CompanyId });
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var personVm = _contactPersonService.GetContactPerson(id);
+            return View(personVm);
+        }
+
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var person = _contactPersonService.GetContactPerson(id);
+            return View(person);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(ContactPersonVm personVm)
+        {
+            _contactPersonService.DeleteContactPerson(personVm.Id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

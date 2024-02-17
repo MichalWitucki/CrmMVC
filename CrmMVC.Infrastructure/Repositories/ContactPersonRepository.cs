@@ -24,11 +24,26 @@ namespace CrmMVC.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
+        public void Delete(int id)
+        {
+            ContactPerson? contactPerson = _context.ContactPeople.Find(id);
+            _context.ContactPeople.Remove(contactPerson);
+            _context.SaveChanges();
+        }
+
         public IQueryable<ContactPerson> GetAll()
         {
             return _context.ContactPeople
                 .Include(cp => cp.Company)
                 .Include(cp => cp.Role);
+        }
+
+        public ContactPerson? GetContactPerson(int id)
+        {
+            return _context.ContactPeople
+                .Include(cp => cp.Company)
+                .Include(cp => cp.Role)
+                .FirstOrDefault(cp => cp.Id == id);
         }
 
         public IQueryable<PersonRole> GetPersonRoles()

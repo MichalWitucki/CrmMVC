@@ -3,7 +3,10 @@ using CrmMVC.Application.Services;
 using CrmMVC.Application.ViewModels.Company;
 using CrmMVC.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.ComponentModel.Design;
 using System.Linq;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace CrmMVC.Web.Controllers
 {
@@ -66,13 +69,20 @@ namespace CrmMVC.Web.Controllers
         public IActionResult Edit(AddCompanyVm company)
         {
             _companyService.UpdateCompany(company);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", new { @id = company.Id });
         }
 
-        
+        [HttpGet]
         public IActionResult Delete(int id)
         {
-            _companyService.DeleteCompany(id);
+            var company = _companyService.GetCompany(id);
+            return View(company);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(CompanyVm company)
+        {
+            _companyService.DeleteCompany(company.Id);
             return RedirectToAction(nameof(Index));
         }
     }

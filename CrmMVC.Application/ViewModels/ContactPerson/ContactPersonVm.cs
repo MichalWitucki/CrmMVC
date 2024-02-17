@@ -15,5 +15,6 @@ namespace CrmMVC.Application.ViewModels.ContactPerson
         public string PhoneNumber { get; set; }
         public string Role { get; set; }
         public string Company { get; set; }
+        public int CompanyId { get; set; }
     }
 }

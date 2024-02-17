@@ -48,7 +48,7 @@ namespace CrmMVC.Application.Services
                 Voivodeship = company.Voivodeship.VoivodeshipName,
                 City = company.City,
                 CompanyType = company.CompanyType.CompanyTypeName,
-                ContactPeople = company.ContactPeople,
+                ContactPeople = company.ContactPeople
             };
             return companyVm;
         }
@@ -79,15 +79,15 @@ namespace CrmMVC.Application.Services
             _companyRepository.AddCompany(company);
         }
 
-        public void UpdateCompany(AddCompanyVm companyVM)
+        public void UpdateCompany(AddCompanyVm companyVm)
         {
             var company = new Company()
             {
-                Id = companyVM.Id,
-                CompanyName = companyVM.CompanyName,
-                City = companyVM.City,
-                VoivodeshipId = companyVM.VoivodeshipId,
-                CompanyTypeId = companyVM.CompanyTypeId
+                Id = companyVm.Id,
+                CompanyName = companyVm.CompanyName,
+                City = companyVm.City,
+                VoivodeshipId = companyVm.VoivodeshipId,
+                CompanyTypeId = companyVm.CompanyTypeId
             };
             _companyRepository.UpdateCompany(company);
         }

@@ -10,7 +10,9 @@ namespace CrmMVC.Domain.Interfaces
     public interface IContactPersonRepository
     {
         void AddContactPerson(ContactPerson person);
+        void Delete(int id);
         IQueryable<ContactPerson> GetAll();
+        ContactPerson? GetContactPerson(int id);
         IQueryable<PersonRole> GetPersonRoles();
     }
 }

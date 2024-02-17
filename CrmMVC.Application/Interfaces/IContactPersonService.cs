@@ -11,7 +11,9 @@ namespace CrmMVC.Application.Interfaces
     public interface IContactPersonService
     {
         void AddContactPerson(AddContactPersonVm person);
+        void DeleteContactPerson(int id);
         IEnumerable<ContactPersonVm> GetAll();
+        ContactPersonVm GetContactPerson(int id);
         IEnumerable<PersonRole> GetPersonRoles();
     }
 }
