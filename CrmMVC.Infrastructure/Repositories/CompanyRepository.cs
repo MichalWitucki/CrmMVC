@@ -52,7 +52,8 @@ namespace CrmMVC.Infrastructure.Repositories
 
         public void DeleteCompany(int id)
         {
-            Company? company = _context.Companies.Find(id); 
+            Company? company = _context.Companies.Find(id);
+            
             _context.Companies.Remove(company);
             _context.SaveChanges();
         }

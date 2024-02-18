@@ -50,5 +50,16 @@ namespace CrmMVC.Infrastructure.Repositories
         {
             return _context.PersonRoles;
         }
+
+        public void UpdateContactPerson(ContactPerson contactPerson)
+        {
+            _context.Attach(contactPerson);
+            _context.Entry(contactPerson).Property("FirstName").IsModified = true;
+            _context.Entry(contactPerson).Property("LastName").IsModified = true;
+            _context.Entry(contactPerson).Property("Email").IsModified = true;
+            _context.Entry(contactPerson).Property("PhoneNumber").IsModified = true;
+            _context.Entry(contactPerson).Property("RoleId").IsModified = true;
+            _context.SaveChanges();
+        }
     }
 }

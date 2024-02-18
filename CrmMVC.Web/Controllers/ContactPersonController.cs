@@ -64,5 +64,20 @@ namespace CrmMVC.Web.Controllers
             _contactPersonService.DeleteContactPerson(personVm.Id);
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var company = _contactPersonService.GetContactPersonForEdit(id);
+            return View(company);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(AddContactPersonVm personVm)
+        {
+            _contactPersonService.EditContactPerson(personVm);
+            return RedirectToAction("Details", new { @id = personVm.Id });
+        }
     }
 }

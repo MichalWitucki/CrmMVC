@@ -14,5 +14,6 @@ namespace CrmMVC.Domain.Interfaces
         IQueryable<ContactPerson> GetAll();
         ContactPerson? GetContactPerson(int id);
         IQueryable<PersonRole> GetPersonRoles();
+        void UpdateContactPerson(ContactPerson contactPerson);
     }
 }

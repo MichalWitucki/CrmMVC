@@ -14,6 +14,7 @@ namespace CrmMVC.Application.ViewModels.ContactPerson
         public string? LastName { get; set; }
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
+        public string Role { get; set; }
         public int RoleId { get; set; }
         public List<PersonRole> Roles { get; set; }
         public int CompanyId { get; set; }

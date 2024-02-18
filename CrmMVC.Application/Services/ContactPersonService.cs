@@ -39,6 +39,7 @@ namespace CrmMVC.Application.Services
             _contactPersonRepository.Delete(id);
         }
 
+
         public IEnumerable<ContactPersonVm> GetAll()
         {
             IQueryable<ContactPerson> contactPeople = _contactPersonRepository.GetAll();
@@ -78,9 +79,41 @@ namespace CrmMVC.Application.Services
             return contactPersonVm;
         }
 
+
+        public AddContactPersonVm GetContactPersonForEdit(int id)
+        {
+            var contactPerson = _contactPersonRepository.GetContactPerson(id);
+            var contactPersonVm = new AddContactPersonVm()
+            {
+                Id = contactPerson.Id,
+                FirstName = contactPerson.FirstName,
+                LastName = contactPerson.LastName,
+                Email = contactPerson.Email,
+                PhoneNumber = contactPerson.PhoneNumber,
+                RoleId = contactPerson.RoleId,
+                CompanyId = contactPerson.CompanyId,
+                Roles = GetPersonRoles().ToList()
+        };
+            return contactPersonVm;
+        }
+
         public IEnumerable<PersonRole> GetPersonRoles()
         {
             return _contactPersonRepository.GetPersonRoles().ToList();
+        }
+
+        public void EditContactPerson(AddContactPersonVm personVm)
+        {
+            var contactPerson = new ContactPerson()
+            {
+                Id = personVm.Id,
+                FirstName = personVm.FirstName,
+                LastName= personVm.LastName,
+                Email = personVm.Email,
+                PhoneNumber = personVm.PhoneNumber,
+                RoleId = personVm.RoleId,
+            };
+            _contactPersonRepository.UpdateContactPerson(contactPerson);
         }
     }
 }

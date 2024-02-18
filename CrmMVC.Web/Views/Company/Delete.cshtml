@@ -2,7 +2,7 @@
 
 <h3>Usuwanie firmy</h3>
 <div>
-    <h4>Czy na pewno usunąć ?</h4>
+    <h4>Czy na pewno usunąć firmę?</h4>
     <hr />
     <dl class="row">
         <dd class = "col-sm-10">
@@ -21,9 +21,18 @@
             @Html.DisplayFor(model => model.CompanyType)
         </dd>
     </dl>
-    
+    @if (@Model.ContactPeople.Count > 0) 
+    {
+    <div class="alert alert-danger" role="alert">
+        Uwaga, w firmie dodane są osoby: (@Model.ContactPeople.Count). <br/> 
+        Wszystkie osoby zostaną usunięte razem z firmą.
+    </div>
+    }
+
     <form asp-action="Delete">
         <input type="submit" value="Usuń" class="btn btn-danger" /> |
-        <a asp-action="Index">Powrót</a>
+        <a asp-action="Details" asp-route-id="@Model.Id">Powrót do firmy</a> |
+        <a asp-action="Index">Powrót do listy firm</a>
+
     </form>
 </div>

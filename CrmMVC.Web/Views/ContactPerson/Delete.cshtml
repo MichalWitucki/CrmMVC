@@ -26,13 +26,11 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Company)
         </dd>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CompanyId)
-        </dd>
     </dl>
     
     <form asp-action="Delete">
         <input type="submit" value="Usuń" class="btn btn-danger" /> |
+        <a asp-controller="ContactPerson" asp-action="Details" asp-route-id="@Model.Id">Powrót</a> |
         <a asp-controller="Company" asp-action="Details" asp-route-id="@Model.CompanyId">Powrót do firmy</a> |
         <a asp-controller="ContactPerson" asp-action="Index">Powrót do osób</a>
     </form>

@@ -58,7 +58,7 @@ namespace CrmMVC.Application.Services
             var company = _companyRepository.GetCompany(id);
             var companyVm = new AddCompanyVm()
             {
-                
+                Id = company.Id,
                 CompanyName = company.CompanyName,
                 VoivodeshipId = company.VoivodeshipId,
                 City = company.City,
