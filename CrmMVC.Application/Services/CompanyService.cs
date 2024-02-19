@@ -38,7 +38,18 @@ namespace CrmMVC.Application.Services
             return companiesVm;
         }
 
-        public CompanyVm GetCompany(int id)
+        public ListCompanyVm GetAllForList()
+        {
+            var companies = GetAll().ToList();
+            ListCompanyVm companiesListVm = new ListCompanyVm()
+            {
+                Companies = companies,
+                Count = companies.Count()
+            };
+            return companiesListVm;
+        }
+
+            public CompanyVm GetCompany(int id)
         {
             var company = _companyRepository.GetCompany(id);
             var companyVm = new CompanyVm()

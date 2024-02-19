@@ -21,9 +21,16 @@ namespace CrmMVC.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var companies = _companyService.GetAll();
+            var companies = _companyService.GetAllForList();
             return View(companies);
         }
+
+        //[HttpPost]
+        //public IActionResult Index(/*int pageSize, int pageNumber, string searchString*/)
+        //{
+        //    var companies = _companyService.GetAll();
+        //    return View(companies);
+        //}
 
         [HttpGet]
         public IActionResult Create()
