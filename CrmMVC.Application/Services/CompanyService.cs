@@ -38,13 +38,17 @@ namespace CrmMVC.Application.Services
             return companiesVm;
         }
 
-        public ListCompanyVm GetAllForList()
+        public ListCompanyVm GetAllForList(int pageSize, int pageNumber, string searchString)
         {
-            var companies = GetAll().ToList();
+            var companies = GetAll().Where(c => c.CompanyName.Contains(searchString)).ToList();
+            var companiesToShow = companies.Skip(pageSize * pageNumber - 1).Take(pageSize).ToList();
             ListCompanyVm companiesListVm = new ListCompanyVm()
             {
-                Companies = companies,
-                Count = companies.Count()
+                Companies = companiesToShow,
+                Count = companiesToShow.Count(),
+                PageSize = pageSize,
+                CurrentPage = pageNumber,
+                SearchString = searchString
             };
             return companiesListVm;
         }
