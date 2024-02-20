@@ -18,6 +18,8 @@ namespace CrmMVC.Application.Interfaces
         AddCompanyVm GetCompanyForEdit(int id);
         void UpdateCompany(AddCompanyVm companyVM);
         void DeleteCompany(int id);
-        ListCompanyVm GetAllForList(int pageSize, int pageNumber, string searchString);
-    }
+
+        ListCompanyVm GetAllForList(int pageSize, int pageNumber);
+		ListCompanyVm GetAllForList(int pageSize, int pageNumber, string CompanyNameSearchString, string VoivodeshipSearchString);
+	}
 }

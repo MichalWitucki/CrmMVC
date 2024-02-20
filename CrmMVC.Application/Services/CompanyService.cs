@@ -38,18 +38,37 @@ namespace CrmMVC.Application.Services
             return companiesVm;
         }
 
-        public ListCompanyVm GetAllForList(int pageSize, int pageNumber, string searchString)
+		public ListCompanyVm GetAllForList(int pageSize, int pageNumber)
+		{
+			List<CompanyVm> companies = GetAll().ToList();
+			List<CompanyVm> companiesToShow = companies.Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+			ListCompanyVm companiesListVm = new ListCompanyVm()
+			{
+				Companies = companiesToShow,
+				Count = companies.Count(),
+				PageSize = pageSize,
+				CurrentPage = pageNumber,
+				Voivodeships = GetVoivodeships().ToList()
+			};
+			return companiesListVm;
+		}
+
+		public ListCompanyVm GetAllForList(int pageSize, int pageNumber, string CompanyNameSearchString, string voivodeshipSearchString)
         {
-            var companies = GetAll().Where(c => c.CompanyName.Contains(searchString)).ToList();
-            var companiesToShow = companies.Skip(pageSize * pageNumber - 1).Take(pageSize).ToList();
+            List<CompanyVm> companies = GetAll()
+                .Where(c => c.CompanyName.Contains(CompanyNameSearchString))
+                .Where(c => c.Voivodeship == voivodeshipSearchString)
+                .ToList();
+			List<CompanyVm> companiesToShow = companies.Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
             ListCompanyVm companiesListVm = new ListCompanyVm()
             {
                 Companies = companiesToShow,
-                Count = companiesToShow.Count(),
+                Count = companies.Count(),
                 PageSize = pageSize,
                 CurrentPage = pageNumber,
-                SearchString = searchString
-            };
+                CompanyNameSearchString = CompanyNameSearchString,
+                Voivodeships = GetVoivodeships().ToList()
+			};
             return companiesListVm;
         }
 
