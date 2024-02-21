@@ -21,22 +21,20 @@ namespace CrmMVC.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var companies = _companyService.GetAllForList(2,1);
+            var companies = _companyService.GetAllForList(5,1, "", "", "", "");
             return View(companies);
         }
 
         [HttpPost]
-        public IActionResult Index(int pageSize, int? pageNumber, string CompanyNameSearchString, string VoivodeshipSearchString)
+        public IActionResult Index(int pageSize, int? pageNumber, string companyNameSearchString, string voivodeshipSearchString, string citySearchString, string companyTypeSearchString)
         {
             if (!pageNumber.HasValue)
             {
                 pageNumber = 1;
             }
-            if (CompanyNameSearchString is null)
-            {
-                CompanyNameSearchString = String.Empty;
-            }
-            var companies = _companyService.GetAllForList(pageSize, pageNumber.Value, CompanyNameSearchString, VoivodeshipSearchString);
+            companyNameSearchString = companyNameSearchString is null ? String.Empty : companyNameSearchString;
+			citySearchString = citySearchString is null ? String.Empty : citySearchString;
+            var companies = _companyService.GetAllForList(pageSize, pageNumber.Value, companyNameSearchString, voivodeshipSearchString, citySearchString, companyTypeSearchString);
             return View(companies);
         }
 

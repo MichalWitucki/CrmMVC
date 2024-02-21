@@ -17,6 +17,7 @@ namespace CrmMVC.Application.ViewModels.Company
         public string CitySearchString { get; set; }
         public string CompanyTypeSearchString { get; set; }
 		public List<Voivodeship> Voivodeships { get; set; }
+        public List<CompanyType> CompanyTypes { get; set; }
 		public int Count { get; set; }
     }
 }

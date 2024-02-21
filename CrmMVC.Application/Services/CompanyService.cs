@@ -38,27 +38,17 @@ namespace CrmMVC.Application.Services
             return companiesVm;
         }
 
-		public ListCompanyVm GetAllForList(int pageSize, int pageNumber)
-		{
-			List<CompanyVm> companies = GetAll().ToList();
-			List<CompanyVm> companiesToShow = companies.Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
-			ListCompanyVm companiesListVm = new ListCompanyVm()
-			{
-				Companies = companiesToShow,
-				Count = companies.Count(),
-				PageSize = pageSize,
-				CurrentPage = pageNumber,
-				Voivodeships = GetVoivodeships().ToList()
-			};
-			return companiesListVm;
-		}
 
-		public ListCompanyVm GetAllForList(int pageSize, int pageNumber, string CompanyNameSearchString, string voivodeshipSearchString)
+		public ListCompanyVm GetAllForList(int pageSize, int pageNumber, string CompanyNameSearchString, string voivodeshipSearchString, string citySearchString, string companyTypeSearchString)
         {
             List<CompanyVm> companies = GetAll()
                 .Where(c => c.CompanyName.Contains(CompanyNameSearchString))
-                .Where(c => c.Voivodeship == voivodeshipSearchString)
-                .ToList();
+                .Where(c => c.City.Contains(citySearchString))
+				.ToList();
+
+			companies = !string.IsNullOrEmpty(voivodeshipSearchString) ? companies.Where(c => c.Voivodeship == voivodeshipSearchString).ToList() : companies;
+			companies = !string.IsNullOrEmpty(companyTypeSearchString) ? companies.Where(c => c.CompanyType == companyTypeSearchString).ToList() : companies;
+
 			List<CompanyVm> companiesToShow = companies.Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
             ListCompanyVm companiesListVm = new ListCompanyVm()
             {
@@ -67,7 +57,8 @@ namespace CrmMVC.Application.Services
                 PageSize = pageSize,
                 CurrentPage = pageNumber,
                 CompanyNameSearchString = CompanyNameSearchString,
-                Voivodeships = GetVoivodeships().ToList()
+                Voivodeships = GetVoivodeships().ToList(),
+                CompanyTypes = GetCompanyTypes().ToList()
 			};
             return companiesListVm;
         }
