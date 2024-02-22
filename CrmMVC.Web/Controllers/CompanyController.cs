@@ -21,7 +21,7 @@ namespace CrmMVC.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var companies = _companyService.GetAllForList(5,1, "", "", "", "");
+            var companies = _companyService.GetAllForList(10,1, "", "", "", "");
             return View(companies);
         }
 

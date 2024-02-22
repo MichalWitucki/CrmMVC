@@ -12,6 +12,7 @@ namespace CrmMVC.Application.ViewModels.Company
         public List<CompanyVm> Companies { get; set; }
         public int CurrentPage { get; set; }
         public int PageSize { get; set; }
+        public int NumberOfPages { get; set; }
         public string CompanyNameSearchString { get; set; }
         public string VoivodeshipSearchString { get; set; }
         public string CitySearchString { get; set; }

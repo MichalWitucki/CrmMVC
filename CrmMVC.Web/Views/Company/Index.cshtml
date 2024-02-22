@@ -20,17 +20,18 @@
 			</div>
 			<div class="col">
 				<div class="input-group mb-3">
-					<label class="input-group-text" for="voivodeship">Województwo</label>
-					<select class="form-select" asp-for="VoivodeshipSearchString" asp-items="@(new SelectList(Model.Voivodeships,"VoivodeshipName","VoivodeshipName"))" id="voivodeship">
-						<option></option>
-					</select>
+					<span class="input-group-text" id="city">Miejscowość</span>
+					<input type="text" class="form-control" aria-describedby="city" asp-for="CitySearchString" name="citySearchString" id="citySearchString">
 				</div>
+
 			</div>
 			<div class="row">
 				<div class="col">
 					<div class="input-group mb-3">
-						<span class="input-group-text" id="city">Miejscowość</span>
-						<input type="text" class="form-control" aria-describedby="city" asp-for="CitySearchString" name="citySearchString" id="citySearchString">
+						<label class="input-group-text" for="voivodeship">Województwo</label>
+						<select class="form-select" asp-for="VoivodeshipSearchString" asp-items="@(new SelectList(Model.Voivodeships,"VoivodeshipName","VoivodeshipName"))" id="voivodeship">
+							<option></option>
+						</select>
 					</div>
 				</div>
 				<div class="col">
@@ -38,6 +39,17 @@
 						<label class="input-group-text" for="type">Typ</label>
 						<select class="form-select" asp-for="CompanyTypeSearchString" asp-items="@(new SelectList(Model.CompanyTypes,"CompanyTypeName","CompanyTypeName"))" id="type">
 							<option></option>
+						</select>
+					</div>
+				</div>
+				<div class="col">
+					<div class="input-group mb-3">
+						<label class="input-group-text" for="pageSize">Wyniki wyszukiwania</label>
+						<select class="form-select" asp-for="PageSize" id="pageSize">
+							<option value="5"> 5 </option>
+							<option value="10"> 10 </option>
+							<option value="15">15</option>
+							<option value="20">20</option>
 						</select>
 					</div>
 				</div>
@@ -49,15 +61,6 @@
 		<input type="submit" value="Wyszukaj" class="btn btn-dark" />
 	</div>
 
-	<div class="input-group mb-3">
-		<label class="input-group-text" for="inputGroupSelect02">Wyniki wyszukiwania</label>
-		<select class="form-select"  id="pageSize">
-			<option value="5" selected> 5 </option>
-			<option value="10">10</option>
-			<option value="15">15</option>
-			<option value="20">20</option>
-		</select>
-	</div>
 
 	<div class="row">
 		<table class="table">
@@ -111,24 +114,40 @@
 		</table>
 	</div>
 	<div class="row">
-		<table>
-			<tr>
-				@for (int i = 1; i <= Math.Ceiling(Model.Count / (double)Model.PageSize); i++)
-				{
+		<div class="col">
+			<table align="center">
+				<tr>
 					<td>
-						@if (i != Model.CurrentPage)
-						{
-							<a href="javascript:PagerClick(@i)">@i</a>
-						}
-						else
-						{
-							<span>@i</span>
-						}
+					<a href="javascript:PagerClick(1)">˂˂</a> |
 					</td>
-				}
-			</tr>
-		</table>
-		<input type="hidden" name="pageNumber" id="pageNumber" />
+					<td>
+						<a href="javascript:PagerClick(@Model.CurrentPage-1)">˂</a> |
+					</td>
+					@for (int i = 1; i <= Math.Ceiling(Model.Count / (double)Model.PageSize); i++)
+					{
+						<td>
+							@if (i != Model.CurrentPage)
+							{
+								<a href="javascript:PagerClick(@i)">@i</a>
+							}
+							else
+							{
+								<span>@i</span> 
+							} |
+						</td>
+						Model.NumberOfPages = i;
+
+					}
+					<td>
+						<a href="javascript:PagerClick(@Model.CurrentPage+1)">˃</a> |
+					</td>
+					<td>
+						<a href="javascript:PagerClick(@Model.NumberOfPages)">˃˃</a>
+					</td>
+				</tr>
+			</table>
+			<input type="hidden" name="pageNumber" id="pageNumber" />
+		</div>
 	</div>
 </form>
 
