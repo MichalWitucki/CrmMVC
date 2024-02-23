@@ -1,4 +1,5 @@
-﻿using CrmMVC.Domain.Model;
+﻿using CrmMVC.Application.ViewModels.Common;
+using CrmMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +8,15 @@ using System.Threading.Tasks;
 
 namespace CrmMVC.Application.ViewModels.Company
 {
-    public class ListCompanyVm
+    public class ListCompanyVm : NavigationVm
     {
+        public int Id { get; set; }
         public List<CompanyVm> Companies { get; set; }
-        public int CurrentPage { get; set; }
-        public int PageSize { get; set; }
-        public int NumberOfPages { get; set; }
         public string CompanyNameSearchString { get; set; }
         public string VoivodeshipSearchString { get; set; }
         public string CitySearchString { get; set; }
         public string CompanyTypeSearchString { get; set; }
 		public List<Voivodeship> Voivodeships { get; set; }
         public List<CompanyType> CompanyTypes { get; set; }
-		public int Count { get; set; }
     }
 }

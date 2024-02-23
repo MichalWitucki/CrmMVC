@@ -17,5 +17,6 @@ namespace CrmMVC.Application.Interfaces
         IEnumerable<PersonRole> GetPersonRoles();
         void EditContactPerson(AddContactPersonVm personVm);
         AddContactPersonVm GetContactPersonForEdit(int id);
-    }
+		ListContactPersonVm GetAllForList(int pageSize, int pageNumber, string firstNameSearchString, string lastNameSearchString, string emailSearchString, string phoneNumberSearchString, string roleSearchString, string companySearchString);
+	}
 }

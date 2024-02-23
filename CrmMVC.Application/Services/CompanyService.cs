@@ -42,8 +42,8 @@ namespace CrmMVC.Application.Services
 		public ListCompanyVm GetAllForList(int pageSize, int pageNumber, string CompanyNameSearchString, string voivodeshipSearchString, string citySearchString, string companyTypeSearchString)
         {
             List<CompanyVm> companies = GetAll()
-                .Where(c => c.CompanyName.Contains(CompanyNameSearchString))
-                .Where(c => c.City.Contains(citySearchString))
+                .Where(c => c.CompanyName.ToLower().Contains(CompanyNameSearchString.ToLower()))
+                .Where(c => c.City.ToLower().Contains(citySearchString.ToLower()))
 				.ToList();
 
 			companies = !string.IsNullOrEmpty(voivodeshipSearchString) ? companies.Where(c => c.Voivodeship == voivodeshipSearchString).ToList() : companies;

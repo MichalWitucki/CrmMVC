@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using CrmMVC.Application.Services;
 using CrmMVC.Application.ViewModels.ContactPerson;
 using System.Linq;
+using System;
 
 namespace CrmMVC.Web.Controllers
 {
@@ -17,13 +18,31 @@ namespace CrmMVC.Web.Controllers
             _contactPersonService = contactPersonService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            var contactPeople = _contactPersonService.GetAll();
+            var contactPeople = _contactPersonService.GetAllForList(10,1,"","","","","","");
             return View(contactPeople);
         }
 
-        [HttpGet]
+		[HttpPost]
+		public IActionResult Index(int pageSize, int? pageNumber,
+			string firstNameSearchString, string lastNameSearchString, string emailSearchString,
+			string phoneNumberSearchString, string roleSearchString, string companySearchString)
+		{
+			if (!pageNumber.HasValue)
+			{
+				pageNumber = 1;
+			}
+			firstNameSearchString = firstNameSearchString is null ? String.Empty : firstNameSearchString;
+			lastNameSearchString = lastNameSearchString is null ? String.Empty : lastNameSearchString;
+			emailSearchString = emailSearchString is null ? String.Empty : emailSearchString;
+			phoneNumberSearchString = phoneNumberSearchString is null ? String.Empty : phoneNumberSearchString;
+			var contactPeople = _contactPersonService.GetAllForList(pageSize, pageNumber.Value, firstNameSearchString, lastNameSearchString, emailSearchString, phoneNumberSearchString, roleSearchString, companySearchString);
+			return View(contactPeople);
+		}
+
+		[HttpGet]
         public IActionResult Create(int companyId)
         {
             var roles = _contactPersonService.GetPersonRoles().ToList();
