@@ -18,7 +18,7 @@ namespace CrmMVC.Infrastructure.Repositories
             _context = context;
         }
 
-        public void AddContactPerson(ContactPerson person)
+        public void Add(ContactPerson person)
         {
             _context.ContactPeople.Add(person);
             _context.SaveChanges();
@@ -38,7 +38,7 @@ namespace CrmMVC.Infrastructure.Repositories
                 .Include(cp => cp.Role);
         }
 
-        public ContactPerson? GetContactPerson(int id)
+        public ContactPerson? Get(int id)
         {
             return _context.ContactPeople
                 .Include(cp => cp.Company)
@@ -51,7 +51,7 @@ namespace CrmMVC.Infrastructure.Repositories
             return _context.PersonRoles;
         }
 
-        public void UpdateContactPerson(ContactPerson contactPerson)
+        public void Update(ContactPerson contactPerson)
         {
             _context.Attach(contactPerson);
             _context.Entry(contactPerson).Property("FirstName").IsModified = true;

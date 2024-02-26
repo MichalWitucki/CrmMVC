@@ -6,7 +6,7 @@ namespace CrmMVC.Domain.Model
     {
         public int Id { get; set; }
         public int CatalogueNumber { get; set; }
-        public string ProductName { get; set; }
+        public string Description { get; set; }
         public ProductUnit Unit { get; set; }
         public int UnitId { get; set; }
         public double WeightPerUnitInKg { get; set; }

@@ -28,7 +28,7 @@
             </div>
             <div class="dropdown">
                 <label asp-for="RoleId" class="control-label">Funkcja</label>
-                <select asp-for="RoleId" asp-items="@(new SelectList(Model.Roles,"Id","PersonRoleName"))" class="form-control">
+                <select asp-for="RoleId" asp-items="@(new SelectList(Model.Roles,"Id","Name"))" class="form-control">
                     <option></option>
                 </select>
                 <span asp-validation-for="RoleId" class="text-danger"></span>
@@ -40,13 +40,28 @@
             <br/>
             <div class="form-group">
                 <input type="submit" value="Dodaj" class="btn btn-primary" />
+                <input type="button" value="Powrót" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-controller="Company" asp-action="Details" asp-route-id ="@Model.CompanyId">Powrót</a>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Czy na pewno chcesz zakończyć dodawanie?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Wróć do dodawania</button>
+                <a asp-controller="Company" asp-action="Details" asp-route-id="@Model.CompanyId">Powrót</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {

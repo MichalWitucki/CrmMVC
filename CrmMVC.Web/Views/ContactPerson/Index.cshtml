@@ -37,7 +37,7 @@
 				<div class="col">
 					<div class="input-group mb-3">
 						<label class="input-group-text" for="role">Stanowisko</label>
-						<select class="form-select" asp-for="RoleSearchString" asp-items="@(new SelectList(Model.Roles,"PersonRoleName","PersonRoleName"))" id="role">
+						<select class="form-select" asp-for="RoleSearchString" asp-items="@(new SelectList(Model.Roles,"Name","Name"))" id="role">
 							<option></option>
 						</select>
 					</div>

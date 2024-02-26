@@ -22,25 +22,25 @@ namespace CrmMVC.Infrastructure.Repositories
         {
             return _context.Companies
                 .Include(c => c.Voivodeship)
-                .Include(c => c.CompanyType);
+                .Include(c => c.Type);
         }
 
-        public Company? GetCompany(int id) 
+        public Company? Get(int id) 
         {
             return _context.Companies
                 .Include(c => c.Voivodeship)
-                .Include(c => c.CompanyType)
+                .Include(c => c.Type)
                 .Include(c => c.ContactPeople)
                 .FirstOrDefault(c => c.Id == id);
         }
 
-        public void AddCompany(Company company) 
+        public void Add(Company company) 
         {
             _context.Companies.Add(company);
             _context.SaveChanges();
         }
 
-        public void UpdateCompany(Company company)
+        public void Update(Company company)
         {
             _context.Attach(company);
             _context.Entry(company).Property("CompanyName").IsModified = true;
@@ -50,7 +50,7 @@ namespace CrmMVC.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public void DeleteCompany(int id)
+        public void Delete(int id)
         {
             Company? company = _context.Companies.Find(id);
             

@@ -33,8 +33,8 @@ namespace CrmMVC.Application.Services
 					LastName = person.LastName,
 					Email = person.Email,
 					PhoneNumber = person.PhoneNumber,
-					Role = person.Role.PersonRoleName,
-					Company = person.Company.CompanyName
+					Role = person.Role.Name,
+					Company = person.Company.Name
 				};
 
 				contactPeopleVm.Add(contactPersonVm);
@@ -86,7 +86,7 @@ namespace CrmMVC.Application.Services
 			RoleId = personVm.RoleId,
 			CompanyId = personVm.CompanyId
 		};
-		_contactPersonRepository.AddContactPerson(person);
+		_contactPersonRepository.Add(person);
 	}
 
 	public void DeleteContactPerson(int id)
@@ -99,7 +99,7 @@ namespace CrmMVC.Application.Services
 
 	public ContactPersonVm GetContactPerson(int id)
 	{
-		var contactPerson = _contactPersonRepository.GetContactPerson(id);
+		var contactPerson = _contactPersonRepository.Get(id);
 		var contactPersonVm = new ContactPersonVm()
 		{
 			Id = contactPerson.Id,
@@ -107,8 +107,8 @@ namespace CrmMVC.Application.Services
 			LastName = contactPerson.LastName,
 			Email = contactPerson.Email,
 			PhoneNumber = contactPerson.PhoneNumber,
-			Role = contactPerson.Role.PersonRoleName,
-			Company = contactPerson.Company.CompanyName,
+			Role = contactPerson.Role.Name,
+			Company = contactPerson.Company.Name,
 			CompanyId = contactPerson.CompanyId
 		};
 		return contactPersonVm;
@@ -117,7 +117,7 @@ namespace CrmMVC.Application.Services
 
 	public AddContactPersonVm GetContactPersonForEdit(int id)
 	{
-		var contactPerson = _contactPersonRepository.GetContactPerson(id);
+		var contactPerson = _contactPersonRepository.Get(id);
 		var contactPersonVm = new AddContactPersonVm()
 		{
 			Id = contactPerson.Id,
@@ -148,7 +148,7 @@ namespace CrmMVC.Application.Services
 			PhoneNumber = personVm.PhoneNumber,
 			RoleId = personVm.RoleId,
 		};
-		_contactPersonRepository.UpdateContactPerson(contactPerson);
+		_contactPersonRepository.Update(contactPerson);
 	}
 }
 }

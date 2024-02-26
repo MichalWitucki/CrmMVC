@@ -28,10 +28,10 @@ namespace CrmMVC.Application.Services
                 var companyVm = new CompanyVm()
                 {
                     Id = company.Id,
-                    CompanyName = company.CompanyName,
-                    Voivodeship = company.Voivodeship.VoivodeshipName,
+                    CompanyName = company.Name,
+                    Voivodeship = company.Voivodeship.Name,
                     City = company.City,
-                    CompanyType = company.CompanyType.CompanyTypeName
+                    CompanyType = company.Type.Name
                 };
                 companiesVm.Add(companyVm);
             }
@@ -65,14 +65,14 @@ namespace CrmMVC.Application.Services
 
             public CompanyVm GetCompany(int id)
         {
-            var company = _companyRepository.GetCompany(id);
+            var company = _companyRepository.Get(id);
             var companyVm = new CompanyVm()
             {
                 Id = company.Id,
-                CompanyName = company.CompanyName,
-                Voivodeship = company.Voivodeship.VoivodeshipName,
+                CompanyName = company.Name,
+                Voivodeship = company.Voivodeship.Name,
                 City = company.City,
-                CompanyType = company.CompanyType.CompanyTypeName,
+                CompanyType = company.Type.Name,
                 ContactPeople = company.ContactPeople
             };
             return companyVm;
@@ -80,14 +80,14 @@ namespace CrmMVC.Application.Services
 
         public AddCompanyVm GetCompanyForEdit(int id)
         {
-            var company = _companyRepository.GetCompany(id);
+            var company = _companyRepository.Get(id);
             var companyVm = new AddCompanyVm()
             {
                 Id = company.Id,
-                CompanyName = company.CompanyName,
+                CompanyName = company.Name,
                 VoivodeshipId = company.VoivodeshipId,
                 City = company.City,
-                CompanyTypeId = company.CompanyTypeId
+                CompanyTypeId = company.TypeId
             };
             return companyVm;
         }
@@ -96,12 +96,12 @@ namespace CrmMVC.Application.Services
         {
             var company = new Company()
             {
-                CompanyName = companyVm.CompanyName,
+                Name = companyVm.CompanyName,
                 City = companyVm.City,
                 VoivodeshipId = companyVm.VoivodeshipId,
-                CompanyTypeId = companyVm.CompanyTypeId
+                TypeId = companyVm.CompanyTypeId
             };
-            _companyRepository.AddCompany(company);
+            _companyRepository.Add(company);
         }
 
         public void UpdateCompany(AddCompanyVm companyVm)
@@ -109,17 +109,17 @@ namespace CrmMVC.Application.Services
             var company = new Company()
             {
                 Id = companyVm.Id,
-                CompanyName = companyVm.CompanyName,
+                Name = companyVm.CompanyName,
                 City = companyVm.City,
                 VoivodeshipId = companyVm.VoivodeshipId,
-                CompanyTypeId = companyVm.CompanyTypeId
+                TypeId = companyVm.CompanyTypeId
             };
-            _companyRepository.UpdateCompany(company);
+            _companyRepository.Update(company);
         }
 
         public void DeleteCompany(int id)
         {
-            _companyRepository.DeleteCompany(id);
+            _companyRepository.Delete(id);
         }
 
         public IEnumerable<Voivodeship> GetVoivodeships()

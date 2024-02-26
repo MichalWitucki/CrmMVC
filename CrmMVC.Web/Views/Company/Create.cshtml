@@ -19,7 +19,7 @@
             </div>
             <div class="dropdown">
                 <label asp-for="VoivodeshipId" class="control-label">Województwo</label>
-                <select asp-for="VoivodeshipId" asp-items="@(new SelectList(Model.Voivodeships,"Id","VoivodeshipName"))" class="form-control">
+                <select asp-for="VoivodeshipId" asp-items="@(new SelectList(Model.Voivodeships,"Id","Name"))" class="form-control">
                     <option></option>
                 </select>
                 <span asp-validation-for="VoivodeshipId" class="text-danger"></span>
@@ -31,7 +31,7 @@
             </div>
             <div class="dropdown">
                 <label asp-for="CompanyTypeId" class="control-label">Typ</label>
-                <select asp-for="CompanyTypeId" asp-items="@(new SelectList(Model.CompanyTypes,"Id","CompanyTypeName"))" class="form-control">
+                <select asp-for="CompanyTypeId" asp-items="@(new SelectList(Model.CompanyTypes,"Id","Name"))" class="form-control">
                     <option></option>
                 </select>
                 <span asp-validation-for="CompanyTypeId" class="text-danger"></span>
@@ -39,14 +39,31 @@
             <br />
             <div class="form-group">
                 <input type="submit" value="Dodaj" class="btn btn-primary" />
+                <input type="button" value="Powrót" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" />
             </div>
+
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Powrót</a>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Czy na pewno chcesz zakończyć dodawanie?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Wróć do dodawania</button>
+                <a asp-action="Index">Powrót</a>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

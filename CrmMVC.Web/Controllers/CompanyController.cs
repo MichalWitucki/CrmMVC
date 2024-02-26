@@ -3,6 +3,7 @@ using CrmMVC.Application.Services;
 using CrmMVC.Application.ViewModels.Company;
 using CrmMVC.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.ComponentModel.Design;
 using System.Linq;
@@ -13,14 +14,17 @@ namespace CrmMVC.Web.Controllers
     public class CompanyController : Controller
     {
         private readonly ICompanyService _companyService;
-        public CompanyController(ICompanyService companyService)
+        private readonly ILogger<CompanyController> _logger;
+        public CompanyController(ICompanyService companyService, ILogger<CompanyController> logger)
         {
+            _logger = logger;
             _companyService = companyService;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
+            _logger.LogWarning("SSSSSSSSSSSSSS");
             var companies = _companyService.GetAllForList(10,1, "", "", "", "");
             return View(companies);
         }
@@ -28,6 +32,7 @@ namespace CrmMVC.Web.Controllers
         [HttpPost]
         public IActionResult Index(int pageSize, int? pageNumber, string companyNameSearchString, string voivodeshipSearchString, string citySearchString, string companyTypeSearchString)
         {
+            _logger.LogWarning("ddddddddddddddddd");
             if (!pageNumber.HasValue)
             {
                 pageNumber = 1;
@@ -41,6 +46,7 @@ namespace CrmMVC.Web.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            _logger.LogWarning("dddffffffffff");
             var voivodeships = _companyService.GetVoivodeships().ToList();
             var companyTypes = _companyService.GetCompanyTypes().ToList();
             var vm = new AddCompanyVm()

@@ -29,7 +29,7 @@
 				<div class="col">
 					<div class="input-group mb-3">
 						<label class="input-group-text" for="voivodeship">Województwo</label>
-						<select class="form-select" asp-for="VoivodeshipSearchString" asp-items="@(new SelectList(Model.Voivodeships,"VoivodeshipName","VoivodeshipName"))" id="voivodeship">
+						<select class="form-select" asp-for="VoivodeshipSearchString" asp-items="@(new SelectList(Model.Voivodeships,"Name","Name"))" id="voivodeship">
 							<option></option>
 						</select>
 					</div>
@@ -37,7 +37,7 @@
 				<div class="col">
 					<div class="input-group mb-3">
 						<label class="input-group-text" for="type">Typ</label>
-						<select class="form-select" asp-for="CompanyTypeSearchString" asp-items="@(new SelectList(Model.CompanyTypes,"CompanyTypeName","CompanyTypeName"))" id="type">
+						<select class="form-select" asp-for="CompanyTypeSearchString" asp-items="@(new SelectList(Model.CompanyTypes,"Name","Name"))" id="type">
 							<option></option>
 						</select>
 					</div>

@@ -34,7 +34,7 @@
             </div>
             <div class="dropdown">
                 <label asp-for="RoleId" class="control-label">Funkcja</label>
-                <select asp-for="RoleId" asp-items="@(new SelectList(Model.Roles,"Id","PersonRoleName"))" class="form-control">
+                <select asp-for="RoleId" asp-items="@(new SelectList(Model.Roles,"Id","Name"))" class="form-control">
                     <option></option>
                 </select>
                 <span asp-validation-for="RoleId" class="text-danger"></span>
