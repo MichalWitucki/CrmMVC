@@ -43,10 +43,10 @@ namespace CrmMVC.Infrastructure.Repositories
         public void Update(Company company)
         {
             _context.Attach(company);
-            _context.Entry(company).Property("CompanyName").IsModified = true;
+            _context.Entry(company).Property("Name").IsModified = true;
             _context.Entry(company).Property("VoivodeshipId").IsModified = true;
             _context.Entry(company).Property("City").IsModified = true;
-            _context.Entry(company).Property("CompanyTypeId").IsModified = true;
+            _context.Entry(company).Property("TypeId").IsModified = true;
             _context.SaveChanges();
         }
 
