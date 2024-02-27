@@ -1,4 +1,5 @@
 ﻿using CrmMVC.Domain.Model;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace CrmMVC.Infrastructure
 {
-    public class CRMDbContext : IdentityDbContext
-    {
+    public class CRMDbContext : IdentityDbContext<IdentityUser>
+	{
         public CRMDbContext(DbContextOptions<CRMDbContext> options) : base(options)
         {
         }

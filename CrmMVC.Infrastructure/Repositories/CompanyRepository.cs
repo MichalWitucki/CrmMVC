@@ -31,6 +31,7 @@ namespace CrmMVC.Infrastructure.Repositories
                 .Include(c => c.Voivodeship)
                 .Include(c => c.Type)
                 .Include(c => c.ContactPeople)
+                .ThenInclude(cp => cp.Role)
                 .FirstOrDefault(c => c.Id == id);
         }
 

@@ -94,7 +94,7 @@
                     @Html.DisplayFor(modelItem => item.PhoneNumber)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Role)
+                    @Html.DisplayFor(modelItem => item.Role.Name)
                 </td>
                 <td>
                     @Html.ActionLink("Edycja", "Edit", "ContactPerson", new { id=item.Id }) |
