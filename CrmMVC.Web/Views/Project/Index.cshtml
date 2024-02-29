@@ -1,0 +1,95 @@
+﻿@model IEnumerable<CrmMVC.Application.ViewModels.Project.ListProjectVm>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortNameSearchString)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullNameSearchString)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CitySearchString)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VoivodeshipSearchString)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusSearchString)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeSearchString)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentPage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PageSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfPages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Count)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortNameSearchString)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullNameSearchString)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CitySearchString)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VoivodeshipSearchString)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusSearchString)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeSearchString)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentPage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PageSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfPages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
