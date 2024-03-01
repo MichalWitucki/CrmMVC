@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrmMVC.Application.Interfaces
+namespace CrmMVC.Domain.Interfaces
 {
-    public interface IProjectService
+    public interface IProjectRepository
     {
     }
 }

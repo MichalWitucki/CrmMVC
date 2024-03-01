@@ -4,7 +4,12 @@ namespace CrmMVC.Web.Controllers
 {
 	public class ProjectController : Controller
 	{
-		public IActionResult Index()
+        public ProjectController()
+        {
+            
+        }
+
+        public IActionResult Index()
 		{
 			return View();
 		}

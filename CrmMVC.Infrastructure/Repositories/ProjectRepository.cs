@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CrmMVC.Domain.Interfaces;
 
-namespace CrmMVC.Application.Interfaces
+namespace CrmMVC.Infrastructure.Repositories
 {
-    public interface IProjectService
+    public class ProjectRepository : IProjectRepository
     {
     }
 }

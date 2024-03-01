@@ -46,8 +46,10 @@ namespace CrmMVC.Application.Services
                 .Where(c => c.City.ToLower().Contains(citySearchString.ToLower()))
 				.ToList();
 
-			companies = !string.IsNullOrEmpty(voivodeshipSearchString) ? companies.Where(c => c.Voivodeship == voivodeshipSearchString).ToList() : companies;
-			companies = !string.IsNullOrEmpty(companyTypeSearchString) ? companies.Where(c => c.CompanyType == companyTypeSearchString).ToList() : companies;
+			companies = !string.IsNullOrEmpty(voivodeshipSearchString) ? companies
+                .Where(c => c.Voivodeship == voivodeshipSearchString).ToList() : companies;
+			companies = !string.IsNullOrEmpty(companyTypeSearchString) ? companies
+                .Where(c => c.CompanyType == companyTypeSearchString).ToList() : companies;
 
 			List<CompanyVm> companiesToShow = companies.Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
             ListCompanyVm companiesListVm = new ListCompanyVm()
