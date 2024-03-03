@@ -16,6 +16,7 @@ namespace CrmMVC.Infrastructure
         {
             services.AddTransient<ICompanyRepository, CompanyRepository>();
             services.AddTransient<IContactPersonRepository, ContactPersonRepository>();
+            services.AddTransient<IProjectRepository, ProjectRepository>();
             return services;
         }
     }

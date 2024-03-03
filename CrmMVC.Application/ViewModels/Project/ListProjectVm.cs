@@ -11,11 +11,10 @@ namespace CrmMVC.Application.ViewModels.Project
 {
 	public class ListProjectVm : NavigationVm
 	{
-		public int Id { get; set; }
-		public List<ProjectVm> Companies { get; set; }
+		public List<ProjectVm> Projects { get; set; }
 		public List<Voivodeship> Voivodeships { get; set; }
-		public List<ProjectStatus> Status { get; set; }
-		public List<ProjectType> Type { get; set; }
+		public List<ProjectStatus> Statuses { get; set; }
+		public List<ProjectType> Types { get; set; }
 		public string ShortNameSearchString { get; set; }
 		public string FullNameSearchString { get; set; }
 		public string CitySearchString { get; set; }

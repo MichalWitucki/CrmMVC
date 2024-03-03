@@ -20,6 +20,7 @@ namespace CrmMVC.Application
         {
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<IContactPersonService, ContactPersonService>();
+            services.AddTransient<IProjectService, ProjectService>();
 
             services.AddValidatorsFromAssemblyContaining<AddCompanyVmValidator>()
                 .AddFluentValidationAutoValidation()

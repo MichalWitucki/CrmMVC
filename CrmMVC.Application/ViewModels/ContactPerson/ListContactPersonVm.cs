@@ -11,7 +11,6 @@ namespace CrmMVC.Application.ViewModels.ContactPerson
 {
 	public class ListContactPersonVm : NavigationVm
 	{
-        public int Id { get; set; }
         public List<ContactPersonVm> ContactPeople { get; set; }
 		public string FirstNameSearchString { get; set; }
 		public string LastNameSearchString { get; set; }

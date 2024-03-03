@@ -10,7 +10,6 @@ namespace CrmMVC.Application.ViewModels.Company
 {
     public class ListCompanyVm : NavigationVm
     {
-        public int Id { get; set; }
         public List<CompanyVm> Companies { get; set; }
         public string CompanyNameSearchString { get; set; }
         public string VoivodeshipSearchString { get; set; }

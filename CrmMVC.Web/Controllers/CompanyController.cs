@@ -24,7 +24,7 @@ namespace CrmMVC.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            _logger.LogWarning("SSSSSSSSSSSSSS");
+            //_logger.LogWarning("SSSSSSSSSSSSSS");
             var companies = _companyService.GetAllForList(10,1, "", "", "", "");
             return View(companies);
         }
@@ -32,7 +32,7 @@ namespace CrmMVC.Web.Controllers
         [HttpPost]
         public IActionResult Index(int pageSize, int? pageNumber, string companyNameSearchString, string voivodeshipSearchString, string citySearchString, string companyTypeSearchString)
         {
-            _logger.LogWarning("ddddddddddddddddd");
+            //_logger.LogWarning("ddddddddddddddddd");
             if (!pageNumber.HasValue)
             {
                 pageNumber = 1;
@@ -46,7 +46,7 @@ namespace CrmMVC.Web.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            _logger.LogWarning("dddffffffffff");
+            //_logger.LogWarning("dddffffffffff");
             var voivodeships = _companyService.GetVoivodeships().ToList();
             var companyTypes = _companyService.GetCompanyTypes().ToList();
             var vm = new AddCompanyVm()
