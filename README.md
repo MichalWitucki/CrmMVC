@@ -8,4 +8,4 @@ Progress status:
     Mod 3 - OOP
     Mod 6 - ASP .NET Core Web App
     Mod 7 - Data bases
-
+    Mod 8 - From view to model
