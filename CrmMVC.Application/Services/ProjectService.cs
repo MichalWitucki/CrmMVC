@@ -38,16 +38,30 @@ namespace CrmMVC.Application.Services
             return projectsVm;
         }
 
-        public ListProjectVm GetAllForList(int pageSize, int pageNumber, string CompanyNameSearchString, string voivodeshipSearchString, string citySearchString, string companyTypeSearchString)
+        public ListProjectVm GetAllForList(int pageSize, int pageNumber, string fullNameSearchString, string shortNameSearchString, string voivodeshipSearchString, string citySearchString, string typeSearchString, string statusSearchString)
         {
-            List<ProjectVm> projects = GetAll().ToList();
+            List<ProjectVm> projects = GetAll()
+                .Where(p => p.FullName.ToLower().Contains(fullNameSearchString.ToLower()))
+                .Where(p => p.ShortName.ToLower().Contains(shortNameSearchString.ToLower()))
+			    .Where(p => p.City.ToLower().Contains(citySearchString.ToLower()))
+				.ToList();
 
-            //List<ProjectVm> projectsToShow
+            projects = !string.IsNullOrEmpty(voivodeshipSearchString) ? projects
+                .Where(p => p.Voivodeship == voivodeshipSearchString).ToList() : projects;
+			projects = !string.IsNullOrEmpty(typeSearchString) ? projects
+				.Where(p => p.Type == typeSearchString).ToList() : projects; 
+            projects = !string.IsNullOrEmpty(statusSearchString) ? projects
+				.Where(p => p.Status == statusSearchString).ToList() : projects;
 
-            ListProjectVm projectsListVm = new ListProjectVm()
+            List<ProjectVm> projectsToShow = projects.Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+
+			ListProjectVm projectsListVm = new ListProjectVm()
             {
-                Projects = projects,
-                Voivodeships = GetVoivodeships().ToList(),
+                Projects = projectsToShow,
+				Count = projects.Count(),
+				PageSize = pageSize,
+				CurrentPage = pageNumber,
+				Voivodeships = GetVoivodeships().ToList(),
                 Statuses = GetStatuses().ToList(),
                 Types = GetTypes().ToList()
             };

@@ -39,10 +39,10 @@ namespace CrmMVC.Application.Services
         }
 
 
-		public ListCompanyVm GetAllForList(int pageSize, int pageNumber, string CompanyNameSearchString, string voivodeshipSearchString, string citySearchString, string companyTypeSearchString)
+		public ListCompanyVm GetAllForList(int pageSize, int pageNumber, string companyNameSearchString, string voivodeshipSearchString, string citySearchString, string companyTypeSearchString)
         {
             List<CompanyVm> companies = GetAll()
-                .Where(c => c.CompanyName.ToLower().Contains(CompanyNameSearchString.ToLower()))
+                .Where(c => c.CompanyName.ToLower().Contains(companyNameSearchString.ToLower()))
                 .Where(c => c.City.ToLower().Contains(citySearchString.ToLower()))
 				.ToList();
 
@@ -52,13 +52,14 @@ namespace CrmMVC.Application.Services
                 .Where(c => c.CompanyType == companyTypeSearchString).ToList() : companies;
 
 			List<CompanyVm> companiesToShow = companies.Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+
             ListCompanyVm companiesListVm = new ListCompanyVm()
             {
                 Companies = companiesToShow,
                 Count = companies.Count(),
                 PageSize = pageSize,
                 CurrentPage = pageNumber,
-                CompanyNameSearchString = CompanyNameSearchString,
+                CompanyNameSearchString = companyNameSearchString,
                 Voivodeships = GetVoivodeships().ToList(),
                 CompanyTypes = GetCompanyTypes().ToList()
 			};

@@ -30,7 +30,8 @@ namespace CrmMVC.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(int pageSize, int? pageNumber, string companyNameSearchString, string voivodeshipSearchString, string citySearchString, string companyTypeSearchString)
+		[ValidateAntiForgeryToken]
+		public IActionResult Index(int pageSize, int? pageNumber, string companyNameSearchString, string voivodeshipSearchString, string citySearchString, string companyTypeSearchString)
         {
             //_logger.LogWarning("ddddddddddddddddd");
             if (!pageNumber.HasValue)

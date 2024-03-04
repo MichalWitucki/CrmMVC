@@ -10,9 +10,9 @@ namespace CrmMVC.Application.ViewModels.Project
 	public class AddProjectVm
 	{
 		public int Id { get; set; }
-		public string FullName { get; set; }
-		public string ShortName { get; set; }
-		public string City { get; set; }
+		public string? FullName { get; set; }
+		public string? ShortName { get; set; }
+		public string? City { get; set; }
 		public string? TenderText { get; set; }
 		public int VoivodeshipId { get; set; }
 		public List<Voivodeship> Voivodeships { get; set; }
