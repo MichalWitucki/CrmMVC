@@ -1,13 +1,13 @@
 ﻿@model CrmMVC.Application.ViewModels.Project.ListProjectVm
 
 @{
-    ViewData["Title"] = "PROJEKTY";
+	ViewData["Title"] = "PROJEKTY";
 }
 
 <h1>PROJEKTY</h1>
 
 <p>
-    <a asp-action="Create">+ Nowy projekt</a>
+	<a asp-action="Create">+ Nowy projekt</a>
 </p>
 <form asp-action="Index" asp-controller="Project" method="post">
 	<div class="container text-center">
@@ -49,13 +49,36 @@
 				</div>
 				<div class="col">
 					<div class="input-group mb-3">
-						<label class="input-group-text" for="pageSize">Wyniki wyszukiwania</label>
-						<select class="form-select" asp-for="PageSize" id="pageSize">
-							<option value="5"> 5 </option>
-							<option value="10"> 10 </option>
-							<option value="15">15</option>
-							<option value="20">20</option>
-						</select>
+						
+							<label asp-for="StardDateSearchBy" class="control-label">Data rozpoczęcia</label>
+							<div id="datepicker-group" class="input-group date" data-date-format="dd/mm/yyyy">
+								<input asp-for="StardDateSearchBy" type="date" class="form-control" />
+								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+							</div>
+						
+						<span>
+							<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+								<input type="radio" class="btn-check" name="btnradio" id="btnradioGreater" autocomplete="off" checked>
+								<label class="btn btn-outline-secondary" for="btnradioGreater">></label>
+								<input type="radio" class="btn-check" name="btnradio" id="btnradioEqual" autocomplete="off">
+								<label class="btn btn-outline-secondary" for="btnradioEqual">=</label>
+								<input type="radio" class="btn-check" name="btnradio" id="btnradioLess" autocomplete="off">
+								<label class="btn btn-outline-secondary" for="btnradioLess"><</label>
+							</div>
+						</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="input-group mb-3">
+							<label class="input-group-text" for="pageSize">Wyniki wyszukiwania</label>
+							<select class="form-select" asp-for="PageSize" id="pageSize">
+								<option value="5"> 5 </option>
+								<option value="10"> 10 </option>
+								<option value="15">15</option>
+								<option value="20">20</option>
+							</select>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -133,13 +156,19 @@
 						Miejscowość
 					</th>
 					<th>
-						Nazwa
+						Nazwa skr.
 					</th>
 					<th>
 						Status
 					</th>
 					<th>
 						Typ
+					</th>
+					<th>
+						Data rozp.
+					</th>
+					<th>
+						Data zak.
 					</th>
 					<th></th>
 				</tr>
@@ -167,6 +196,12 @@
 							@Html.DisplayFor(modelItem => item.Type)
 						</td>
 						<td>
+							@Html.DisplayFor(modelItem => item.StartDate)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.EndDate)
+						</td>
+						<td>
 							@Html.ActionLink("Edycja", "Edit", new { id = item.Id }) |
 							@Html.ActionLink("Szczegóły", "Details", new { id = item.Id }) |
 							@Html.ActionLink("Usuwanie", "Delete", new { id = item.Id })
@@ -187,4 +222,14 @@
 		}
 	</script>
 
+	<script>
+		$(document).ready(function () {
+			$("#datepicker-group").datepicker({
+				format: "dd-M-yyyy",
+				todayHighlight: true,
+				autoclose: true,
+				clearBtn: true
+			});
+		});
+	</script>
 }

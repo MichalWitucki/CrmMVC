@@ -21,5 +21,6 @@ namespace CrmMVC.Application.ViewModels.Project
 		public string VoivodeshipSearchString { get; set; }
 		public string StatusSearchString { get; set; }
 		public string TypeSearchString { get; set; }
+		public DateOnly StardDateSearchBy { get; set; }
 	}
 }

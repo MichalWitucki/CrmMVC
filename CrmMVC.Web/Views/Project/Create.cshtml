@@ -8,60 +8,73 @@
 
 <h4>Dodawanie nowego projektu</h4>
 <hr />
-	<form class="row" asp-action="Create">
-		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-		<div class="col-md-4">
-			<div class="form-group">
-				<label asp-for="FullName" class="control-label">Nazwa</label>
-				<input asp-for="FullName" class="form-control" />
-				<span asp-validation-for="FullName" class="text-danger"></span>
+<form class="row" asp-action="Create">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+	<div class="col-md-4">
+		<div class="form-group">
+			<label asp-for="FullName" class="control-label">Nazwa</label>
+			<input asp-for="FullName" class="form-control" />
+			<span asp-validation-for="FullName" class="text-danger"></span>
+		</div>
+		<div class="dropdown">
+			<label asp-for="VoivodeshipId" class="control-label">Województwo</label>
+			<select asp-for="VoivodeshipId" asp-items="@(new SelectList(Model.Voivodeships,"Id","Name"))" class="form-control">
+				<option></option>
+			</select>
+			<span asp-validation-for="VoivodeshipId" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="City" class="control-label">Miejscowość</label>
+			<input asp-for="City" class="form-control" />
+			<span asp-validation-for="City" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="ShortName" class="control-label">Nazwa skrócona</label>
+			<input asp-for="ShortName" class="form-control" />
+			<span asp-validation-for="ShortName" class="text-danger"></span>
+		</div>
+		<div class="dropdown">
+			<label asp-for="StatusId" class="control-label">Status</label>
+			<select asp-for="StatusId" asp-items="@(new SelectList(Model.Statuses,"Id","Name"))" class="form-control">
+				<option></option>
+			</select>
+			<span asp-validation-for="StatusId" class="text-danger"></span>
+		</div>
+		<div class="dropdown">
+			<label asp-for="TypeId" class="control-label">Typ</label>
+			<select asp-for="TypeId" asp-items="@(new SelectList(Model.Types,"Id","Name"))" class="form-control">
+				<option></option>
+			</select>
+			<span asp-validation-for="TypeId" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="StartDate" class="control-label">Data rozpoczęcia</label>
+			<div id="datepicker-group" class="input-group date" data-date-format="dd/mm/yyyy">
+				<input asp-for="StartDate" type="date" class="form-control" />
+				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
-			<div class="dropdown">
-				<label asp-for="VoivodeshipId" class="control-label">Województwo</label>
-				<select asp-for="VoivodeshipId" asp-items="@(new SelectList(Model.Voivodeships,"Id","Name"))" class="form-control">
-					<option></option>
-				</select>
-				<span asp-validation-for="VoivodeshipId" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="EndDate" class="control-label">Data zakończenia </label>
+			<div id="datepicker-group" class="input-group date" data-date-format="dd/mm/yyyy">
+				<input asp-for="EndDate" type="date" class="form-control" />
+				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
-			<div class="form-group">
-				<label asp-for="City" class="control-label">Miejscowość</label>
-				<input asp-for="City" class="form-control" />
-				<span asp-validation-for="City" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="ShortName" class="control-label">Nazwa skrócona</label>
-				<input asp-for="ShortName" class="form-control" />
-				<span asp-validation-for="ShortName" class="text-danger"></span>
-			</div>
-			<div class="dropdown">
-				<label asp-for="StatusId" class="control-label">Status</label>
-				<select asp-for="StatusId" asp-items="@(new SelectList(Model.Statuses,"Id","Name"))" class="form-control">
-					<option></option>
-				</select>
-				<span asp-validation-for="StatusId" class="text-danger"></span>
-			</div>
-			<div class="dropdown">
-				<label asp-for="TypeId" class="control-label">Typ</label>
-				<select asp-for="TypeId" asp-items="@(new SelectList(Model.Types,"Id","Name"))" class="form-control">
-					<option></option>
-				</select>
-				<span asp-validation-for="TypeId" class="text-danger"></span>
-			</div>
+		</div>
 		<br />
 		<div class="form-group">
 			<input type="submit" value="Dodaj" class="btn btn-primary" />
 			<input type="button" value="Powrót" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" />
 		</div>
+	</div>
+	<div class="col">
+		<div class="form-group">
+			<label asp-for="TenderText" class="control-label">Tekst przetargu</label>
+			<textarea asp-for="TenderText" class="form-control" rows="19"></textarea>
+			<span asp-validation-for="TenderText" class="text-danger"></span>
 		</div>
-		<div class="col">
-			<div class="form-group">
-				<label asp-for="TenderText" class="control-label">Tekst przetargu</label>
-				<textarea asp-for="TenderText" class="form-control" rows="16"></textarea>
-				<span asp-validation-for="TenderText" class="text-danger"></span>
-			</div>
-
-		</div>
-	</form>
+	</div>
+</form>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -83,6 +96,17 @@
 </div>
 
 @section Scripts {
+	<script>
+		$(document).ready(function () {
+			$("#datepicker-group").datepicker({
+				format: "dd-M-yyyy",
+				todayHighlight: true,
+				autoclose: true,
+				clearBtn: true
+			});
+		});
+	</script>
+
 	@{
 		await Html.RenderPartialAsync("_ValidationScriptsPartial");
 	}
