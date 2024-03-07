@@ -73,5 +73,7 @@ namespace CrmMVC.Web.Controllers
 			ProjectDetailsVm vm = _projectService.GetProject(id);
 			return View(vm);
 		}
+
+		//delete and update
 	}
 }
