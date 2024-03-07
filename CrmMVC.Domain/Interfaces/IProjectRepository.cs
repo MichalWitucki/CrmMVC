@@ -10,6 +10,7 @@ namespace CrmMVC.Domain.Interfaces
     public interface IProjectRepository
     {
 		void Add(Project project);
+		Project? Get(int id);
 		IQueryable<Project> GetAll();
         IQueryable<ProjectStatus> GetStatuses();
         IQueryable<ProjectType> GetTypes();

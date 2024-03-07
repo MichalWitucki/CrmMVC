@@ -13,7 +13,8 @@ namespace CrmMVC.Application.Interfaces
 		void AddProject(AddProjectVm project);
 		IEnumerable<ProjectVm> GetAll();
         ListProjectVm GetAllForList(int pageSize, int pageNumber, string fullNameSearchString, string shortNameSearchString, string voivodeshipSearchString, string citySearchString, string typeSearchString, string statusSearchString);
-        IEnumerable<ProjectStatus> GetStatuses();
+		ProjectDetailsVm GetProject(int id);
+		IEnumerable<ProjectStatus> GetStatuses();
         IEnumerable<ProjectType> GetTypes();
         IEnumerable<Voivodeship> GetVoivodeships();
     }

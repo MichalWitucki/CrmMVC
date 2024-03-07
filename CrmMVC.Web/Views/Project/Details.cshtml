@@ -1,0 +1,78 @@
+﻿@model CrmMVC.Application.ViewModels.Project.ProjectDetailsVm
+
+@{
+	ViewData["Title"] = "Szczegóły";
+}
+
+<h1>PROJEKTY</h1>
+
+<div>
+	<h4>Szczegóły</h4>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<dl class="row">
+					<dt class="col-sm-3">
+						@Html.DisplayNameFor(model => model.Id)
+					</dt>
+					<dd class="col-sm-8">
+						@Html.DisplayFor(model => model.Id)
+					</dd>
+					<dt class="col-sm-3">
+						Pełna nazwa
+					</dt>
+					<dd class="col-sm-8">
+						@Html.DisplayFor(model => model.FullName)
+					</dd>
+					<dt class="col-sm-3">
+						Województwo
+					</dt>
+					<dd class="col-sm-8">
+						@Html.DisplayFor(model => model.Voivodeship)
+					</dd>
+					<dt class="col-sm-3">
+						Miejscowość
+					</dt>
+					<dd class="col-sm-8">
+						@Html.DisplayFor(model => model.City)
+					</dd>
+					<dt class="col-sm-3">
+						Nazwa skrócona
+					</dt>
+					<dd class="col-sm-8">
+						@Html.DisplayFor(model => model.ShortName)
+					</dd>
+					<dt class="col-sm-3">
+						Status
+					</dt>
+					<dd class="col-sm-8">
+						@Html.DisplayFor(model => model.Status)
+					</dd>
+					<dt class="col-sm-3">
+						Typ
+					</dt>
+					<dd class="col-sm-8">
+						@Html.DisplayFor(model => model.Type)
+					</dd>
+				</dl>
+			</div>
+			<div class="col-md-6">
+				<dl class="row">
+					<dt class="col-sm-3">
+						Tekst przetargu
+					</dt>
+					<dd class="col-sm-8">
+						@Html.DisplayFor(model => model.TenderText)
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div>
+	@Html.ActionLink("Edycja", "Edit", new { id = Model.Id }) |
+	@Html.ActionLink("Usuwanie", "Delete", new { id = Model.Id }) |
+	<a asp-action="Index">Powrót</a>
+</div>

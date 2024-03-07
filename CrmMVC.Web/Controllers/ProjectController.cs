@@ -65,5 +65,13 @@ namespace CrmMVC.Web.Controllers
 			_projectService.AddProject(project);
 			return RedirectToAction(nameof(Index));
 		}
+
+		[HttpGet]
+		public IActionResult Details(int id)
+		{
+			
+			ProjectDetailsVm vm = _projectService.GetProject(id);
+			return View(vm);
+		}
 	}
 }

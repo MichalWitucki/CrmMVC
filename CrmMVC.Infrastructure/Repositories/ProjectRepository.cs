@@ -46,5 +46,14 @@ namespace CrmMVC.Infrastructure.Repositories
             _context.Projects.Add(project);
             _context.SaveChanges();
         }
-    }
+
+		public Project? Get(int id)
+		{
+			return _context.Projects
+				.Include(p => p.Status)
+				.Include(p => p.Voivodeship)
+				.Include(p => p.Type)
+                .Where(p => p.Id == id).FirstOrDefault();
+		}
+	}
 }

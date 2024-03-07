@@ -99,5 +99,25 @@ namespace CrmMVC.Application.Services
             };
             _projectRepository.Add(project);
 		}
+
+		public ProjectDetailsVm GetProject(int id)
+		{
+            Project? project = _projectRepository.Get(id);
+            ProjectDetailsVm projectDetailsVm = new ProjectDetailsVm() 
+            { 
+                Id = project.Id,
+				TenderText = project.TenderText,
+				FullName = project.FullName,
+				ShortName = project.ShortName,
+				Voivodeship = project.Voivodeship.Name,
+				Status = project.Status.Name,
+				Type = project.Type.Name,
+				StartDate = project.StartDate,
+				EndDate = project.EndDate,
+				City = project.City
+			};
+            return projectDetailsVm;
+
+		}
 	}
 }
