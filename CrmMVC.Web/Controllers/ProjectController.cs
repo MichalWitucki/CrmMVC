@@ -74,6 +74,5 @@ namespace CrmMVC.Web.Controllers
 			return View(vm);
 		}
 
-		//delete and update
 	}
 }
